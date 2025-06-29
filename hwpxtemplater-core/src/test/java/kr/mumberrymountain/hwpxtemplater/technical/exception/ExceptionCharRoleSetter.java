@@ -62,7 +62,7 @@ public class ExceptionCharRoleSetter {
 
         assertEquals("Unexpected error occurred while parsing the template", ex.getMessage());
         assertEquals(InvalidConfigurationException.class, ex.getCause().getClass());
-        assertEquals("charRole for placeHolder type conditition must not be null", ex.getCause().getMessage());
+        assertEquals("charRole for placeHolder type condition must not be null", ex.getCause().getMessage());
     }
 
     @Test

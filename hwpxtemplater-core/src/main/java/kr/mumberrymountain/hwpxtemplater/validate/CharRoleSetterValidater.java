@@ -11,7 +11,7 @@ import java.util.Map;
 public class CharRoleSetterValidater implements Validater{
     private static CharRoleSetterValidater charRoleSetterValidater;
 
-    public static CharRoleSetterValidater getInstance(){
+    public static synchronized CharRoleSetterValidater getInstance(){
         if (charRoleSetterValidater == null) charRoleSetterValidater = new CharRoleSetterValidater();
         return charRoleSetterValidater;
     }
@@ -25,7 +25,7 @@ public class CharRoleSetterValidater implements Validater{
     }
 
     private void validateCharRoleIndividual(CharRole charRole){
-        if (charRole.get(PlaceHolderType.CONDITION) == null) throw new InvalidConfigurationException("charRole for placeHolder type conditition must not be null");
+        if (charRole.get(PlaceHolderType.CONDITION) == null) throw new InvalidConfigurationException("charRole for placeHolder type condition must not be null");
         if (charRole.get(PlaceHolderType.LOOP) == null) throw new InvalidConfigurationException("charRole for placeHolder type loop must not be null");
         if (charRole.get(PlaceHolderType.CLOSURE) == null) throw new InvalidConfigurationException("charRole for placeHolder type closure must not be null");
         if (charRole.get(PlaceHolderType.IMAGE_REPLACEMENT) == null) throw new InvalidConfigurationException("charRole for placeHolder type image must not be null");

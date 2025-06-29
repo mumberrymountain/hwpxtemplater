@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CharRoleSetter {
     @Test
@@ -111,7 +112,7 @@ public class CharRoleSetter {
         charRole.set(PlaceHolderType.IMAGE_REPLACEMENT, '+');
 
         HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config("charRoleSeeter", charRole)
+                .config("charRoleSetter", charRole)
                 .parse(TestUtil.getFilePath(this.getClass(),"hwpx/config/Config_CharRoleSetter_Image.hwpx"))
                 .render(new HashMap<String, String>() {{
                     put("Korea", TestUtil.getFilePath(this.getClass(),"images/country/png/korea.png"));
@@ -120,6 +121,7 @@ public class CharRoleSetter {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = Arrays.asList(
                 "korea", "spain", "belgium"
@@ -147,6 +149,8 @@ public class CharRoleSetter {
         List<String> hrefs = Arrays.asList(
                 "BinData/belgium.png", "BinData/spain.png",  "BinData/korea.png"
         );
+
+        assertTrue(imageManifestItem.size() > 0);
 
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);

@@ -19,7 +19,7 @@ public class CharRole {
         charRoleMap.put(key, value);
     }
 
-    public Object get(PlaceHolderType key) {
+    public Character get(PlaceHolderType key) {
         return charRoleMap.get(key);
     }
 
