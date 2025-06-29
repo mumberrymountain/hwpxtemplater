@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ImagePara {
     @Test
@@ -33,6 +34,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = Arrays.asList(
                 "korea", "spain", "belgium"
@@ -61,6 +63,8 @@ public class ImagePara {
                 "BinData/belgium.png", "BinData/spain.png",  "BinData/korea.png"
         );
 
+        assertTrue(imageManifestItem.size() > 0);
+
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
             assertEquals(manifestItem.id(), manifestIds.get(i));
@@ -81,6 +85,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = Arrays.asList(
                 "korea", "spain", "belgium"
@@ -96,18 +101,20 @@ public class ImagePara {
         ObjectList<ManifestItem> manifest = hwpxTemplater.getFile().contentHPFFile().manifest();
         ArrayList<ManifestItem> imageManifestItem = new ArrayList<>();
         for (ManifestItem manifestItem : manifest.items()) {
-            if(manifestItem.mediaType().equals("image/JPG")) {
+            if(manifestItem.mediaType().equals("image/JPEG")) {
                 imageManifestItem.add(manifestItem);
             }
         }
 
         List<String> manifestIds = Arrays.asList(
-                "belgium", "spain",  "korea"
+                "spain",  "korea", "belgium"
         );
 
         List<String> hrefs = Arrays.asList(
-                "BinData/belgium.jpg", "BinData/spain.jpg",  "BinData/korea.jpg"
+                "BinData/spain.jpg", "BinData/korea.jpg", "BinData/belgium.jpg"
         );
+
+        assertTrue(imageManifestItem.size() > 0);
 
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
@@ -129,6 +136,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = Arrays.asList(
                 "korea", "spain", "belgium"
@@ -157,6 +165,8 @@ public class ImagePara {
                 "BinData/belgium.gif", "BinData/spain.gif",  "BinData/korea.gif"
         );
 
+        assertTrue(imageManifestItem.size() > 0);
+
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
             assertEquals(manifestItem.id(), manifestIds.get(i));
@@ -177,6 +187,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = Arrays.asList(
                 "korea", "spain", "belgium"
@@ -205,6 +216,8 @@ public class ImagePara {
                 "BinData/belgium.bmp", "BinData/korea.bmp", "BinData/spain.bmp"
         );
 
+        assertTrue(imageManifestItem.size() > 0);
+
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
             assertEquals(manifestItem.id(), manifestIds.get(i));
@@ -225,6 +238,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = new ArrayList<>();
 
@@ -248,6 +262,8 @@ public class ImagePara {
             hrefs.add("BinData/" + secId + ".PNG");
         }
 
+        assertTrue(imageManifestItem.size() > 0);
+
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
             Assertions.assertTrue(secIds.contains(manifestItem.id()));
@@ -268,6 +284,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = new ArrayList<>();
 
@@ -291,6 +308,8 @@ public class ImagePara {
             hrefs.add("BinData/" + secId + ".JPEG");
         }
 
+        assertTrue(imageManifestItem.size() > 0);
+
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
             Assertions.assertTrue(secIds.contains(manifestItem.id()));
@@ -311,6 +330,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = new ArrayList<>();
 
@@ -334,6 +354,8 @@ public class ImagePara {
             hrefs.add("BinData/" + secId + ".GIF");
         }
 
+        assertTrue(imageManifestItem.size() > 0);
+
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
             Assertions.assertTrue(secIds.contains(manifestItem.id()));
@@ -354,6 +376,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = new ArrayList<>();
 
@@ -377,6 +400,8 @@ public class ImagePara {
             hrefs.add("BinData/" + secId + ".BMP");
         }
 
+        assertTrue(imageManifestItem.size() > 0);
+
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);
             Assertions.assertTrue(secIds.contains(manifestItem.id()));
@@ -397,6 +422,7 @@ public class ImagePara {
                 }});
 
         ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new PicFilter(), false);
+        assertTrue(results.length > 0);
 
         List<String> secIds = Arrays.asList(
                 "korea", "spain", "belgium"
@@ -424,6 +450,8 @@ public class ImagePara {
         List<String> hrefs = Arrays.asList(
                 "BinData/belgium.png", "BinData/spain.png",  "BinData/korea.png"
         );
+
+        assertTrue(imageManifestItem.size() > 0);
 
         for (int i = 0; i < imageManifestItem.size(); i++) {
             ManifestItem manifestItem = imageManifestItem.get(i);

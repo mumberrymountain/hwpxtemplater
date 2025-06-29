@@ -2,7 +2,8 @@ package kr.mumberrymountain.hwpxtemplater;
 
 public enum ConfigOption {
     DELIM_PREFIX("delimPrefix"),
-    DELIM_SUFFIX("delimSuffix");
+    DELIM_SUFFIX("delimSuffix"),
+    CHAR_ROLE_SETTER("charRoleSetter");
 
     private String type;
 
