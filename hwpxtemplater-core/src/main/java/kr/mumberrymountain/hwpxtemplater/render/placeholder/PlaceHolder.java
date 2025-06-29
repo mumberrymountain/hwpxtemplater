@@ -31,26 +31,15 @@ public class PlaceHolder {
 
     private void checkType(char typeChar){
         this.typeChar = typeChar;
-        switch (typeChar) {
-            case '?':
-                type = PlaceHolderType.CONDITION;
-                break;
-            case '#':
-                type = PlaceHolderType.LOOP;
-                break;
-            case '/':
-                type = PlaceHolderType.CLOSURE;
-                break;
-            case '$':
-                type = PlaceHolderType.IMAGE_REPLACEMENT;
-                break;
-            case '@':
-                type = PlaceHolderType.TABLE_REPLACEMENT;
-                break;
-            default:
-                type = PlaceHolderType.REPLACEMENT;
-                break;
+        for (PlaceHolderType placeholderType : PlaceHolderType.values()) {
+            Character mappedChar = PlaceHolderCharRole.get(placeholderType);
+            if (mappedChar != null && mappedChar == typeChar) {
+                this.type = placeholderType;
+                return;
+            }
         }
+
+        this.type = PlaceHolderType.REPLACEMENT;
     }
 
     public T t(){

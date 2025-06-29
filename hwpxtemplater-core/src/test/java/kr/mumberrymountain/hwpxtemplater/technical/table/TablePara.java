@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TablePara {
     @Test
     @DisplayName("1. 기본 단락 테이블 기본 렌더링")
-    private void tableParaBasicTableTest() throws Exception {
+    public void tableParaBasicTableTest() throws Exception {
         Table tableParam = Table.builder()
                 .cols(
                         Arrays.asList(
