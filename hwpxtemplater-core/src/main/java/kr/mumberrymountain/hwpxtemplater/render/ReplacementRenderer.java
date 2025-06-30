@@ -1,6 +1,7 @@
 package kr.mumberrymountain.hwpxtemplater.render;
 
 import kr.mumberrymountain.hwpxtemplater.interceptor.InterceptorType;
+import kr.mumberrymountain.hwpxtemplater.interceptor.NullValueInterceptor;
 import kr.mumberrymountain.hwpxtemplater.interceptor.ValueInterceptor;
 import kr.mumberrymountain.hwpxtemplater.linkedobj.LinkedRunItem;
 import kr.mumberrymountain.hwpxtemplater.model.Text;
@@ -21,6 +22,10 @@ public class ReplacementRenderer<H> implements SinglePlaceHolderRenderer {
     private void renderReplacementString(LinkedRunItem linkedRunItem, PlaceHolder placeHolder, Object value) {
         String val = Objects.toString(value, null);
 
+        if(val == null) {
+            NullValueInterceptor nullValueInterceptor = (NullValueInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.NullValueInterceptor);
+            if (nullValueInterceptor != null) val = nullValueInterceptor.intercept(val, placeHolder.data());
+        }
 
         ValueInterceptor valueInterceptor = (ValueInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.ValueInterceptor);
         if (valueInterceptor != null) val = valueInterceptor.intercept(val, placeHolder.data());
@@ -35,6 +40,11 @@ public class ReplacementRenderer<H> implements SinglePlaceHolderRenderer {
 
     private void renderReplacementTextObj(LinkedRunItem linkedRunItem, PlaceHolder placeHolder, Object value) {
         Text text = (Text) value;
+
+        if(text.getValue() == null) {
+            NullValueInterceptor nullValueInterceptor = (NullValueInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.NullValueInterceptor);
+            if (nullValueInterceptor != null) text.setValue(nullValueInterceptor.intercept(text.getValue(), placeHolder.data()));
+        }
 
         ValueInterceptor valueInterceptor = (ValueInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.ValueInterceptor);
         if (valueInterceptor != null) text.setValue(valueInterceptor.intercept(text.getValue(), placeHolder.data()));

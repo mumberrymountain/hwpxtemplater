@@ -10,6 +10,9 @@ public class InterceptorHandler {
             case ValueInterceptor:
                 interceptorMap.put(InterceptorType.ValueInterceptor, interceptor);
                 break;
+            case NullValueInterceptor:
+                interceptorMap.put(InterceptorType.NullValueInterceptor, interceptor);
+                break;
         }
 
         return this;
@@ -22,6 +25,8 @@ public class InterceptorHandler {
     private InterceptorType getType(Interceptor interceptor) {
         if (interceptor instanceof ValueInterceptor) {
             return InterceptorType.ValueInterceptor;
+        } else if (interceptor instanceof  NullValueInterceptor) {
+            return InterceptorType.NullValueInterceptor;
         } else {
             throw new IllegalArgumentException("Unknown interceptor type: " + interceptor.getClass());
         }
