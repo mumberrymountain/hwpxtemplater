@@ -1,7 +1,5 @@
 package kr.mumberrymountain.hwpxtemplater.model;
 
-import kr.mumberrymountain.hwpxtemplater.exception.InvalidModelException;
-
 import java.util.logging.Logger;
 
 public class Image {

@@ -59,7 +59,7 @@ public class Row {
 
     public Row fontSize(int fontSize) {
         if (fontSize <= 0) {
-            logger.warning(String.format("Invalid fontSize value: %d. FontSize must be greater than 0.", height));
+            logger.warning(String.format("Invalid fontSize value: %d. FontSize must be greater than 0.", fontSize));
             return this;
         }
 

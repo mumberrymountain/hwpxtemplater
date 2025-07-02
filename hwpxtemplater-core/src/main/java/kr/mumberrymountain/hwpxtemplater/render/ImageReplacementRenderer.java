@@ -30,7 +30,8 @@ public class ImageReplacementRenderer<H> implements SinglePlaceHolderRenderer {
         else if (value instanceof Image) image = (Image) value;
         else {
             logger.warning(String.format("Value for image template field '%s' must be String or Image, not %s '%s'",
-                    placeHolder.data(), value.getClass().getName(), value == null ? "null" : value.toString()));
+                    placeHolder.data(), value == null ? "null" : value.getClass().getName(),
+                    value == null ? "null" : value.toString()));
             return null;
         }
 

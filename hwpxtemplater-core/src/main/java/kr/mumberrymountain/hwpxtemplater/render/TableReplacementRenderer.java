@@ -28,7 +28,8 @@ public class TableReplacementRenderer <H> implements SinglePlaceHolderRenderer{
         } else {
             if (value == null || !(value instanceof kr.mumberrymountain.hwpxtemplater.model.table.Table)) {
                 logger.warning(String.format("Value for table template field '%s' must be Table, not %s '%s'",
-                        placeHolder.data(), value.getClass().getName(), value == null ? "null" : value.toString()));
+                        placeHolder.data(), value == null ? "null" : value.getClass().getName(),
+                        value == null ? "null" : value.toString()));
                 return;
             }
 
