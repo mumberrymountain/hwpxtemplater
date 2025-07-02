@@ -9,23 +9,31 @@ import kr.mumberrymountain.hwpxtemplater.render.image.ImageInfoFactory;
 import kr.mumberrymountain.hwpxtemplater.render.placeholder.PlaceHolder;
 import kr.mumberrymountain.hwpxtemplater.render.placeholder.PlaceHolderRangeStack;
 
+import java.util.logging.Logger;
+
 import static kr.mumberrymountain.hwpxtemplater.render.RendererUtil.isCurrentRangeLoop;
 import static kr.mumberrymountain.hwpxtemplater.render.RendererUtil.isCurrentRangeProcessing;
 
 public class ImageReplacementRenderer<H> implements SinglePlaceHolderRenderer {
     private PlaceHolderRangeStack rangeStack;
     private final HWPXRenderer rootRenderer;
+    private static final Logger logger = Logger.getLogger(ImageReplacementRenderer.class.getName());
 
     public ImageReplacementRenderer(PlaceHolderRangeStack rangeStack, HWPXRenderer rootRenderer) {
         this.rangeStack = rangeStack;
         this.rootRenderer = rootRenderer;
     }
 
-    private ImageInfo createImageInfo(Object value){
+    private ImageInfo createImageInfo(Object value, PlaceHolder placeHolder){
         Image image = null;
         if (value instanceof String) image = new Image(value.toString());
         else if (value instanceof Image) image = (Image) value;
-        else return null;
+        else {
+            logger.warning(String.format("Value for image template field '%s' must be String or Image, not %s '%s'",
+                    placeHolder.data(), value == null ? "null" : value.getClass().getName(),
+                    value == null ? "null" : value.toString()));
+            return null;
+        }
 
         ImageInfo imageInfo = ImageInfoFactory.create(image);
         rootRenderer.imageManager().computeIfAbsent(imageInfo.fileName(), k -> imageInfo);
@@ -52,7 +60,7 @@ public class ImageReplacementRenderer<H> implements SinglePlaceHolderRenderer {
 
         if (value == null) return;
 
-        ImageInfo imageInfo = createImageInfo(value);
+        ImageInfo imageInfo = createImageInfo(value, placeHolder);
         if (imageInfo == null) return;
 
         renderPicture(linkedRunItem, placeHolder, imageInfo);
