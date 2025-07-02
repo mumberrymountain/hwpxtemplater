@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ExceptionTemplateSyntax {
 
     @Test
-    @DisplayName("1. 진행중인 If 조건문 태그가 끝나지 않은 상황에서 다른 조건문 태그가 닫힐 경우 예외 발생")
-    public void templateSyntaxExceptionTest() throws Exception {
+    @DisplayName("1. 진행중인 If 조건문 태그가 끝나지 않은 상황에서 다른 조건문 태그가 닫힐 경우 TemplateSyntaxException 발생")
+    public void templateSyntaxExceptionTest1() throws Exception {
 
         TemplateRenderingException ex = assertThrows(
                 TemplateRenderingException.class,
@@ -40,5 +40,25 @@ public class ExceptionTemplateSyntax {
         assertEquals("Unexpected error occurred while rendering the template", ex.getMessage());
         assertEquals(TemplateSyntaxException.class, ex.getCause().getClass());
         assertEquals("Closing tag mismatch: Unexpected closing tag </IsRender2>, Expected to close </IsRender1> first", ex.getCause().getMessage());
+    }
+
+    @Test
+    @DisplayName("2. 오프닝 태그 없이 클로징 태그만 있는 경우 TemplateSyntaxException 발생")
+    public void templateSyntaxExceptionTest2() throws Exception {
+
+        TemplateRenderingException ex = assertThrows(
+                TemplateRenderingException.class,
+                () -> {
+                    HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                            .parse(TestUtil.getFilePath(this.getClass(), "hwpx/exception/Exception_Template_03_Syntax.hwpx"))
+                            .render(new HashMap<String, String>() {{
+                                put("Test1", "테스트1");
+                            }});
+                }
+        );
+
+        assertEquals("Unexpected error occurred while rendering the template", ex.getMessage());
+        assertEquals(TemplateSyntaxException.class, ex.getCause().getClass());
+        assertEquals("Unexpected closing tag 'onlyClosing'. No corresponding opening tag found.", ex.getCause().getMessage());
     }
 }
