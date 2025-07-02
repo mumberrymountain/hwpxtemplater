@@ -4,6 +4,7 @@ import kr.dogfoot.hwpxlib.object.common.HWPXObject;
 import kr.dogfoot.hwpxlib.object.common.ObjectType;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.T;
 import kr.dogfoot.hwpxlib.tool.finder.comm.ObjectFilter;
+import kr.mumberrymountain.hwpxtemplater.exception.TemplateSyntaxException;
 import kr.mumberrymountain.hwpxtemplater.render.placeholder.PlaceHolder;
 import kr.mumberrymountain.hwpxtemplater.util.Status;
 import kr.mumberrymountain.hwpxtemplater.util.ParaUtil;
@@ -44,7 +45,9 @@ public class PlaceHolderFilter implements ObjectFilter {
             case TABLE_REPLACEMENT:
                 return true;
             case CLOSURE:
-                if(!(status == Status.PROCESSING && placeHolderText == placeHolder.data())) return false;
+                if(!(status == Status.PROCESSING && placeHolderText == placeHolder.data())) {
+                    throw new TemplateSyntaxException("Unexpected closing tag '" + placeHolder.data() + "'. No corresponding opening tag found.");
+                }
                 processingCondition(Status.WAITING, null);
                 return true;
         }
