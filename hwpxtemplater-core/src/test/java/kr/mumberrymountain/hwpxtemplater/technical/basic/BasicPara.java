@@ -1,5 +1,6 @@
 package kr.mumberrymountain.hwpxtemplater.technical.basic;
 
+import kr.dogfoot.hwpxlib.object.content.header_xml.enumtype.*;
 import kr.dogfoot.hwpxlib.object.content.header_xml.references.CharPr;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.Run;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.T;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BasicPara {
     @Test
@@ -372,6 +373,75 @@ public class BasicPara {
             assertEquals(charPr.height(), heightResults.get(i));
             assertEquals(charPr.textColor(), textColorResults.get(i));
             assertEquals(charPr.shadeColor(), shadeColorResults.get(i));
+        }
+    }
+
+    @Test
+    @DisplayName("9. 기본 단락 Text 모델을 활용한 템플릿 렌더링 - 2")
+    public void basicParaTextObjTest1() throws Exception {
+        HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                .parse(TestUtil.getFilePath(this.getClass(), "hwpx/basic/Basic_Para_10_Text_Obj_Additional.hwpx"))
+                .render(new HashMap<String, Object>() {{
+                    put("renderBold", new Text("굵게").bold(true));
+                    put("renderItalic", new Text("이탤릭").italic(true));
+                    put("renderUnderline", new Text("밑줄").underLine(true));
+                    put("renderStrikeout", new Text("취소선").strikeOut(true));
+                    put("renderOutline", new Text("외각선").outline(true));
+                    put("renderShadow", new Text("그림자").shadow(true));
+                    put("renderEmboss", new Text("양각").emboss(true));
+                    put("renderEngrave", new Text("음각").engrave(true));
+                }});
+
+        ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new ParaTFilter(), false);
+        ArrayList<String> texts = new ArrayList<>();
+        ArrayList<Integer> charPrId = new ArrayList<>();
+        List<String> expectedResults = Arrays.asList(
+                "굵게", "이탤릭", "밑줄", "취소선", "외각선", "그림자", "양각", "음각"
+        );
+
+        for (int i = 0; i < results.length; i++) {
+            T text = (T) results[i].thisObject();
+            texts.add(text.onlyText());
+
+            Run run = (Run) results[i].parentsPath().get(results[i].parentsPath().size() - 1);
+            charPrId.add(Integer.parseInt(run.charPrIDRef()));
+        }
+        assertEquals(texts, expectedResults);
+
+        for (int i = 0; i < charPrId.size(); i++) {
+            CharPr charPr = hwpxTemplater.getFile().headerXMLFile().refList().charProperties().get(charPrId.get(i));
+            switch (i) {
+                case 0:
+                    assertNotNull(charPr.bold());
+                    break;
+                case 1:
+                    assertNotNull(charPr.italic());
+                    break;
+                case 2:
+                    assertEquals(UnderlineType.BOTTOM, charPr.underline().type());
+                    assertEquals(LineType3.SOLID, charPr.underline().shape());
+                    assertEquals("#000000", charPr.underline().color());
+                    break;
+                case 3:
+                    assertEquals(LineType2.SOLID, charPr.strikeout().shape());
+                    assertEquals("#000000", charPr.strikeout().color());
+                    break;
+                case 4:
+                    assertEquals(LineType1.SOLID, charPr.outline().type());
+                    break;
+                case 5:
+                    assertEquals(CharShadowType.DROP, charPr.shadow().type());
+                    assertEquals("#B2B2B2", charPr.shadow().color());
+                    assertEquals((short) 10, charPr.shadow().offsetX());
+                    assertEquals((short) 10, charPr.shadow().offsetY());
+                    break;
+                case 6:
+                    assertNotNull(charPr.emboss());
+                    break;
+                case 7:
+                    assertNotNull(charPr.engrave());
+                    break;
+            }
         }
     }
 }
