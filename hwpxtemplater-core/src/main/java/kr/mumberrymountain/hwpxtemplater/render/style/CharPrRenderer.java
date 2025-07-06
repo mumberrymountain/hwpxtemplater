@@ -1,7 +1,9 @@
 package kr.mumberrymountain.hwpxtemplater.render.style;
 
 import kr.dogfoot.hwpxlib.object.content.header_xml.HeaderXMLFile;
+import kr.dogfoot.hwpxlib.object.content.header_xml.enumtype.*;
 import kr.dogfoot.hwpxlib.object.content.header_xml.references.CharPr;
+import kr.mumberrymountain.hwpxtemplater.model.Text;
 import kr.mumberrymountain.hwpxtemplater.util.HWPXUnitUtil;
 
 public class CharPrRenderer {
@@ -11,13 +13,29 @@ public class CharPrRenderer {
     private final String backgroundColor;
     private final String fontId;
     private final CharPr charPr;
+    private final boolean bold;
+    private final boolean italic;
+    private final boolean underLine;
+    private final boolean strikeOut;
+    private final boolean outline;
+    private final boolean shadow;
+    private final boolean emboss;
+    private final boolean engrave;
 
-    public CharPrRenderer(HeaderXMLFile headerXMLFile, int fontSize, String fontColor, String backgroundColor, String fontId) {
+    public CharPrRenderer(HeaderXMLFile headerXMLFile, String fontId, Text text) {
         this.headerXMLFile = headerXMLFile;
-        this.fontSize = HWPXUnitUtil.pxToHwpxUnit(fontSize);
-        this.fontColor = fontColor;
-        this.backgroundColor = backgroundColor;
         this.fontId = fontId;
+        this.fontSize = HWPXUnitUtil.pxToHwpxUnit(text.getFontSize());
+        this.fontColor = text.getFontColor();
+        this.backgroundColor = text.getBackgroundColor();
+        this.bold = text.isBold();
+        this.italic = text.isItalic();
+        this.underLine = text.isUnderLine();
+        this.strikeOut = text.isStrikeOut();
+        this.outline = text.isOutline();
+        this.shadow = text.isShadow();
+        this.emboss = text.isEmboss();
+        this.engrave = text.isEngrave();
         this.charPr = new CharPr();
     }
 
@@ -89,6 +107,48 @@ public class CharPrRenderer {
         charPr.offset().user((short) 0);
     }
 
+    private void setBold(){
+        charPr.createBold();
+    }
+
+    private void setItalic(){
+        charPr.createItalic();
+    }
+
+    private void setUnderLine(){
+        charPr.createUnderline();
+        charPr.underline().type(UnderlineType.BOTTOM);
+        charPr.underline().shape(LineType3.SOLID);
+        charPr.underline().color("#000000");
+    }
+
+    private void setStrikeOut(){
+        charPr.createStrikeout();
+        charPr.strikeout().shape(LineType2.SOLID);
+        charPr.strikeout().color("#000000");
+    }
+
+    private void setOutline() {
+        charPr.createOutline();
+        charPr.outline().type(LineType1.SOLID);
+    }
+
+    private void setShadow() {
+        charPr.createShadow();
+        charPr.shadow().type(CharShadowType.DROP);
+        charPr.shadow().color("#B2B2B2");
+        charPr.shadow().offsetX((short) 10);
+        charPr.shadow().offsetY((short) 10);
+    }
+
+    private void setEmboss() {
+        charPr.createEmboss();
+    }
+
+    private void setEngrave() {
+        charPr.createEngrave();
+    }
+
     public CharPr render(){
         setId();
         setCharPr();
@@ -97,6 +157,14 @@ public class CharPrRenderer {
         setSpacing();
         setRelSz();
         setOffset();
+        if(bold) setBold();
+        if(italic) setItalic();
+        if(underLine) setUnderLine();
+        if(strikeOut) setStrikeOut();
+        if(outline) setOutline();
+        if(shadow) setShadow();
+        if(emboss) setEmboss();
+        if(engrave) setEngrave();
 
         return charPr;
     }
