@@ -3,16 +3,15 @@ package kr.mumberrymountain.hwpxtemplater.render;
 import kr.dogfoot.hwpxlib.object.content.section_xml.enumtype.*;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.object.Table;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.object.table.Tr;
-import kr.mumberrymountain.hwpxtemplater.render.style.StyleRenderer;
 
 public class TableRenderer {
-    private final StyleRenderer styleRenderer;
+    private final HWPXRenderer rootRenderer;
     private final Table renderingTable;
 
     private final kr.mumberrymountain.hwpxtemplater.model.table.Table table;
 
-    public TableRenderer(StyleRenderer styleRenderer, kr.mumberrymountain.hwpxtemplater.model.table.Table table) {
-        this.styleRenderer = styleRenderer;
+    public TableRenderer(HWPXRenderer rootRenderer, kr.mumberrymountain.hwpxtemplater.model.table.Table table) {
+        this.rootRenderer = rootRenderer;
         this.table = table;
         this.renderingTable = new Table();
     }
@@ -21,7 +20,7 @@ public class TableRenderer {
         Tr tr = renderingTable.addNewTr();
 
         for (int colIdx = 0; colIdx < table.getColCount(); colIdx++) {
-            new TableCellRenderer(styleRenderer, tr.addNewTc(), rowIdx, colIdx,
+            new TableCellRenderer(rootRenderer, tr.addNewTc(), rowIdx, colIdx,
                     table).render();
         }
     }

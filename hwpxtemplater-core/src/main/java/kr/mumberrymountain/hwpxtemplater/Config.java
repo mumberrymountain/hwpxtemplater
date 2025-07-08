@@ -13,6 +13,7 @@ public class Config {
         properties.put(ConfigOption.DELIM_PREFIX.getType(), "{{");
         properties.put(ConfigOption.DELIM_SUFFIX.getType(), "}}");
         properties.put(ConfigOption.CHAR_ROLE_SETTER.getType(), new CharRole());
+        properties.put(ConfigOption.AUTO_TRIM.getType(), false);
     }
 
     public Config validate() throws Exception {

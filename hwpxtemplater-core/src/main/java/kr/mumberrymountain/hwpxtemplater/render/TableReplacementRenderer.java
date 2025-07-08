@@ -36,7 +36,7 @@ public class TableReplacementRenderer <H> implements SinglePlaceHolderRenderer{
             int runItemIndex = linkedRunItem.parent().data().getRunItemIndex(linkedRunItem.data());
             linkedRunItem.parent().data().removeRunItem(placeHolder.t());
 
-            Table table = new TableRenderer(rootRenderer.styleRenderer(), (kr.mumberrymountain.hwpxtemplater.model.table.Table) value).render();
+            Table table = new TableRenderer(rootRenderer, (kr.mumberrymountain.hwpxtemplater.model.table.Table) value).render();
 
             Run pRun = linkedRunItem.parent().data();
             pRun.insertRunItem(table, runItemIndex);
