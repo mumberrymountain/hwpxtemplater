@@ -20,10 +20,6 @@ public class DelimPara {
     @Test
     @DisplayName("1. delimPrefix, delimSuffix Configuration 옵션 적용")
     public void configDelimOneCharTest() throws Exception {
-        Config config = new Config();
-        config.set("delimPrefix", "{");
-        config.set("delimSuffix", "}");
-
 
         HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
                 .config("delimPrefix", "{")
