@@ -12,12 +12,11 @@ import kr.mumberrymountain.hwpxtemplater.model.table.Cell;
 import kr.mumberrymountain.hwpxtemplater.model.table.Col;
 import kr.mumberrymountain.hwpxtemplater.model.table.Row;
 import kr.mumberrymountain.hwpxtemplater.model.table.Table;
-import kr.mumberrymountain.hwpxtemplater.render.style.StyleRenderer;
 import kr.mumberrymountain.hwpxtemplater.util.HWPXUnitUtil;
 
 public class TableCellRenderer {
 
-    private final StyleRenderer styleRenderer;
+    private final HWPXRenderer rootRenderer;
     private final Tc renderingCell;
     private final int rowIdx;
     private final int colIdx;
@@ -25,8 +24,8 @@ public class TableCellRenderer {
     private final Cell cell;
     private final Col col;
     private final Row row;
-    public TableCellRenderer(StyleRenderer styleRenderer, Tc renderingCell, int rowIdx, int colIdx, Table tableParam) {
-        this.styleRenderer = styleRenderer;
+    public TableCellRenderer(HWPXRenderer rootRenderer, Tc renderingCell, int rowIdx, int colIdx, Table tableParam) {
+        this.rootRenderer = rootRenderer;
         this.renderingCell = renderingCell;
         this.rowIdx = rowIdx;
         this.colIdx = colIdx;
@@ -48,7 +47,7 @@ public class TableCellRenderer {
     */
     private void setTc(){
         renderingCell.nameAnd("").headerAnd(false).hasMarginAnd(false).protectAnd(false)
-                    .editableAnd(false).dirtyAnd(false).borderFillIDRefAnd(styleRenderer.renderBorderStyle(cell));
+                    .editableAnd(false).dirtyAnd(false).borderFillIDRefAnd(rootRenderer.styleRenderer().renderBorderStyle(cell));
     }
 
     /*
@@ -117,8 +116,12 @@ public class TableCellRenderer {
     private void setRun(Para cellPara) {
         Run cellRun = cellPara.addNewRun();
         T cellT = cellRun.addNewT();
-        cellT.addText(cell.getText().getValue());
-        cellRun.charPrIDRef(styleRenderer.renderTextStyleAndReturnCharPrId(cell.getText()));
+
+        String val = cell.getText().getValue();
+        if (RendererUtil.isAutoTrim(rootRenderer.config())) val = val.trim();
+
+        cellT.addText(val);
+        cellRun.charPrIDRef(rootRenderer.styleRenderer().renderTextStyleAndReturnCharPrId(cell.getText()));
     }
 
     public void render(){

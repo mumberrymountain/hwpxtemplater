@@ -7,7 +7,8 @@ public class ValidaterFactory {
     public static List<Validater> validaters() {
         return Arrays.asList(
                 DelimValidater.getInstance(),
-                CharRoleSetterValidater.getInstance()
+                CharRoleSetterValidater.getInstance(),
+                AutoTrimValidater.getInstance()
         );
     }
 }

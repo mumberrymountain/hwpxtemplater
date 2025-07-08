@@ -1,5 +1,6 @@
 package kr.mumberrymountain.hwpxtemplater.render;
 
+import kr.mumberrymountain.hwpxtemplater.ConfigOption;
 import kr.mumberrymountain.hwpxtemplater.interceptor.InterceptorType;
 import kr.mumberrymountain.hwpxtemplater.interceptor.NullValueInterceptor;
 import kr.mumberrymountain.hwpxtemplater.interceptor.ValueInterceptor;
@@ -32,6 +33,8 @@ public class ReplacementRenderer<H> implements SinglePlaceHolderRenderer {
 
         if (val == null) return;
 
+        if (RendererUtil.isAutoTrim(rootRenderer.config())) val = val.trim();
+
         placeHolder.t().clear();
         placeHolder.t().addText(val);
 
@@ -50,6 +53,8 @@ public class ReplacementRenderer<H> implements SinglePlaceHolderRenderer {
         if (valueInterceptor != null) text.setValue(valueInterceptor.intercept(text.getValue(), placeHolder.data()));
 
         if (text.getValue() == null) return;
+
+        if (RendererUtil.isAutoTrim(rootRenderer.config())) text.setValue(text.getValue().trim());
 
         placeHolder.t().clear();
         placeHolder.t().addText(text.getValue());
