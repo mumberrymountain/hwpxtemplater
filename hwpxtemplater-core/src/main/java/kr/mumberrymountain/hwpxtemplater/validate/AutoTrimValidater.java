@@ -15,6 +15,6 @@ public class AutoTrimValidater implements Validater {
 
     @Override
     public void validate(Map<String, Object> properties) {
-        if (!(properties.get(ConfigOption.AUTO_TRIM.getType()) instanceof Boolean)) throw new InvalidConfigurationException("autoTrm must be a boolean");
+        if (!(properties.get(ConfigOption.AUTO_TRIM.getType()) instanceof Boolean)) throw new InvalidConfigurationException("autoTrim must be a boolean");
     }
 }
