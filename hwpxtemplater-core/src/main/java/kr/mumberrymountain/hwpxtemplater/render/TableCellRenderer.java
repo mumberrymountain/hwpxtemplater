@@ -105,7 +105,7 @@ public class TableCellRenderer {
     private void setParagraph(SubList sl){
         Para cellPara = sl.addNewPara();
         cellPara.id("0");
-        cellPara.paraPrIDRef("0");
+        cellPara.paraPrIDRef(rootRenderer.styleRenderer().renderParaStyleAndReturnParaPrId(col.getAlign()));
         cellPara.styleIDRef("0");
         cellPara.pageBreak(false);
         cellPara.columnBreak(false);
@@ -121,7 +121,7 @@ public class TableCellRenderer {
         if (RendererUtil.isAutoTrim(rootRenderer.config())) val = val.trim();
 
         cellT.addText(val);
-        cellRun.charPrIDRef(rootRenderer.styleRenderer().renderTextStyleAndReturnCharPrId(cell.getText()));
+        cellRun.charPrIDRef(rootRenderer.styleRenderer().renderCharStyleAndReturnCharPrId(cell.getText()));
     }
 
     public void render(){

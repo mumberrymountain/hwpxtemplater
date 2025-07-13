@@ -2,8 +2,11 @@ package kr.mumberrymountain.hwpxtemplater.render.style;
 
 import kr.dogfoot.hwpxlib.object.content.header_xml.HeaderXMLFile;
 import kr.dogfoot.hwpxlib.object.content.header_xml.references.CharPr;
+import kr.dogfoot.hwpxlib.object.content.header_xml.references.ParaPr;
 import kr.mumberrymountain.hwpxtemplater.model.Text;
+import kr.mumberrymountain.hwpxtemplater.model.table.Align;
 import kr.mumberrymountain.hwpxtemplater.model.table.Cell;
+import kr.mumberrymountain.hwpxtemplater.render.RendererUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,29 +14,14 @@ import java.util.Map;
 public class StyleRenderer {
     private final HeaderXMLFile headerXMLFile;
     private final Map<String, CharPr> charPrs = new HashMap<String, CharPr>();
+    private final Map<String, ParaPr> paraPrs = new HashMap<String, ParaPr>();
+
     public StyleRenderer (HeaderXMLFile headerXMLFile){
         this.headerXMLFile = headerXMLFile;
     }
 
-    private String createStyleKey(Text text) {
-        return String.join(";",
-                    String.valueOf(text.getFontSize()),
-                    text.getFontColor(),
-                    text.getFontFamily(),
-                    text.getBackgroundColor(),
-                    String.valueOf(text.isBold()),
-                    String.valueOf(text.isItalic()),
-                    String.valueOf(text.isUnderLine()),
-                    String.valueOf(text.isStrikeOut()),
-                    String.valueOf(text.isOutline()),
-                    String.valueOf(text.isShadow()),
-                    String.valueOf(text.isEmboss()),
-                    String.valueOf(text.isEngrave())
-              );
-    }
-
-    public String renderTextStyleAndReturnCharPrId(Text text) {
-        String key = createStyleKey(text);
+    public String renderCharStyleAndReturnCharPrId(Text text) {
+        String key = RendererUtil.createCharStyleKey(text);
 
         if (charPrs.containsKey(key)) return charPrs.get(key).id();
 
@@ -41,7 +29,6 @@ public class StyleRenderer {
         CharPr charPr = new CharPrRenderer(headerXMLFile, fontId, text).render();
 
         headerXMLFile.refList().charProperties().add(charPr);
-
         charPrs.put(key, charPr);
 
         return charPr.id();
@@ -49,5 +36,17 @@ public class StyleRenderer {
 
     public String renderBorderStyle(Cell cell) {
         return new BorderRenderer(headerXMLFile, cell).render();
+    }
+
+    public String renderParaStyleAndReturnParaPrId(Align align) {
+        String key = RendererUtil.createParaStyleKey(align);
+        if (paraPrs.containsKey(key)) return paraPrs.get(key).id();
+
+        ParaPr paraPr = new ParaPrRenderer(headerXMLFile, align).render();
+
+        headerXMLFile.refList().paraProperties().add(paraPr);
+        paraPrs.put(key, paraPr);
+
+        return paraPr.id();
     }
 }

@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 public class Col {
     private int width = 100;
+    private Align align = Align.Left;
 
     private String name;
 
@@ -29,5 +30,14 @@ public class Col {
 
     public int getWidth() {
         return width;
+    }
+
+    public Col align(Align align){
+        this.align = align;
+        return this;
+    }
+
+    public Align getAlign(){
+        return align;
     }
 }
