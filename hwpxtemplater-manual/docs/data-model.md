@@ -22,7 +22,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
                                                     .fontFamily("Noto Sans KR") // 폰트로 Noto Sans KR 적용
                                                     .fontSize(20) // 글자 크기로 20px 적용
                             );
-                    }})
+                    }});
 ```
 
 `Text` 데이터 모델은 기본 태그에 데이터를 넣을 때 일반적인 자바 데이터 타입을 대신하여 넣을 수 있는 데이터 모델입니다. <br>

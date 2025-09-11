@@ -29,7 +29,7 @@ implementation 'com.mumberrymountain:hwpxtemplater'
 
 빌드가 잘 이뤄져 `hwpxtemplater`가 정상적으로 설치되었다면 실제로 `hwpxTemplater`가 제대로 동작하는지 확인이 필요합니다. <br>
 
-아래 아미지처럼 `hwpxptemplater.hwpx`라는 이름의 파일을 하나 만든 뒤 `{hwpxTemplater}`라는 필드를 넣어줍니다. <br> <br>
+아래 이미지처럼 `hwpxtemplater.hwpx`라는 이름의 파일을 하나 만든 뒤 `{hwpxTemplater}`라는 필드를 넣어줍니다. <br> <br>
 
 | ![hwpxTemplater 기본 파일](image/getting-started/getting-started-hwpxtemplater-1.png) |
 |:-----------------------------------------------------------------:|

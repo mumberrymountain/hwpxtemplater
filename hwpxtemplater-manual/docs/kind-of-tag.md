@@ -183,7 +183,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 hwpx 템플릿 파일에 문자열 데이터가 아닌 특정 이미지를 렌더링하고 싶을 때 사용하는 태그입니다. 
 
-`{$image}`와 같은 방식으로 사용되며, 이때 `image` 태그에는 문자열로 삽입한 경로에 해당하는 이미지가 렌더링됩니다. 
+`{{$image}}`와 같은 방식으로 사용되며, 이때 `image` 태그에는 문자열로 삽입한 경로에 해당하는 이미지가 렌더링됩니다. 
 
 <br>
 
@@ -203,7 +203,7 @@ import java.util.*;
 
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
                     .parse("./hwpxtemplater.hwpx")
-                    .render(new HashMap<String, Object() {{
+                    .render(new HashMap<String, Object>() {{
                         put("korea", "images/country/png/korea.png");
                         put("spain", "images/country/png/spain.png");
                         put("belgium", "images/country/png/belgium.png");
@@ -227,7 +227,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 hwpx 템플릿 파일에 문자열 데이터가 아닌 테이블을 삽입하고 싶을 때 사용하는 태그입니다.
 
-`{@table}`와 같은 방식으로 사용되며, 이때 `table` 태그에는 hwpxTemplater가 제공하는 Table 클래스 모델을 이용해 만든 테이블을 데이터로 넣음으로 hwpx 테이블을 생성할 수 있습니다.
+`{{@table}}`와 같은 방식으로 사용되며, 이때 `table` 태그에는 hwpxTemplater가 제공하는 Table 클래스 모델을 이용해 만든 테이블을 데이터로 넣음으로 hwpx 테이블을 생성할 수 있습니다.
 
 <br>
 

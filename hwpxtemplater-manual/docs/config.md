@@ -113,7 +113,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
                 .render(new HashMap<String, Object>() {{
                     put("data", "    데이터     "); // 양쪽의 공백을 제거하여 렌더링함
                     }}
-                )
+                );
 
                 ...
 ```
