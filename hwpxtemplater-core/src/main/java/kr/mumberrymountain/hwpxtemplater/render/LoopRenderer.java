@@ -68,6 +68,8 @@ public class LoopRenderer<H> implements PairedPlaceHolderRenderer{
                 Para para = innerList.get(j);
                 section.insertPara(para, startParaIndex + i + j);
             }
+
+            if (innerList.size() > 1) startParaIndex += (innerList.size() - 1);
         }
     }
 
