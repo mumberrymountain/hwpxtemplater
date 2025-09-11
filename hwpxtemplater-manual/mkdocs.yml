@@ -1,0 +1,30 @@
+site_name: hwpxTemplater
+repo_url: https://github.com/mumberrymountain/hwpxtemplater
+repo_name: hwpxTemplater
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      primary: blue grey
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+  font:
+    text: Noto Sans Korean
+
+  logo: image/HwpxTemplater-logo.svg
+
+nav:
+  - "1. 시작하기": index.md
+  - "2. 템플릿 문법": kind-of-tag.md
+  - "3. 기본설정": config.md
+  - "4. 인터셉터": interceptor.md
+  - "5. 데이터 모델": data-model.md
