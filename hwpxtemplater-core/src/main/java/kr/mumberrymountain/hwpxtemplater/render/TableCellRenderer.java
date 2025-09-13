@@ -8,10 +8,7 @@ import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.Para;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.Run;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.T;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.object.table.Tc;
-import kr.mumberrymountain.hwpxtemplater.model.table.Cell;
-import kr.mumberrymountain.hwpxtemplater.model.table.Col;
-import kr.mumberrymountain.hwpxtemplater.model.table.Row;
-import kr.mumberrymountain.hwpxtemplater.model.table.Table;
+import kr.mumberrymountain.hwpxtemplater.model.table.*;
 import kr.mumberrymountain.hwpxtemplater.util.HWPXUnitUtil;
 
 public class TableCellRenderer {
@@ -102,10 +99,16 @@ public class TableCellRenderer {
         setParagraph(sl);
     }
 
+    private Align alignCheck(Cell cell, Col col) {
+        if (cell.getAlign() != null) return cell.getAlign();
+        if (col.getAlign() != null) return col.getAlign();
+        return Align.Left;
+    }
+
     private void setParagraph(SubList sl){
         Para cellPara = sl.addNewPara();
         cellPara.id("0");
-        cellPara.paraPrIDRef("0");
+        cellPara.paraPrIDRef(rootRenderer.styleRenderer().renderParaStyleAndReturnParaPrId(alignCheck(cell, col)));
         cellPara.styleIDRef("0");
         cellPara.pageBreak(false);
         cellPara.columnBreak(false);
@@ -121,7 +124,7 @@ public class TableCellRenderer {
         if (RendererUtil.isAutoTrim(rootRenderer.config())) val = val.trim();
 
         cellT.addText(val);
-        cellRun.charPrIDRef(rootRenderer.styleRenderer().renderTextStyleAndReturnCharPrId(cell.getText()));
+        cellRun.charPrIDRef(rootRenderer.styleRenderer().renderCharStyleAndReturnCharPrId(cell.getText()));
     }
 
     public void render(){

@@ -3,6 +3,8 @@ package kr.mumberrymountain.hwpxtemplater.render;
 import kr.dogfoot.hwpxlib.object.content.section_xml.SectionXMLFile;
 import kr.mumberrymountain.hwpxtemplater.Config;
 import kr.mumberrymountain.hwpxtemplater.ConfigOption;
+import kr.mumberrymountain.hwpxtemplater.model.Text;
+import kr.mumberrymountain.hwpxtemplater.model.table.Align;
 import kr.mumberrymountain.hwpxtemplater.render.placeholder.PlaceHolderRange;
 import kr.mumberrymountain.hwpxtemplater.render.placeholder.Pos;
 import kr.mumberrymountain.hwpxtemplater.util.Status;
@@ -32,5 +34,28 @@ public class RendererUtil {
 
     public static Boolean isAutoTrim(Config config){
         return (Boolean) config.get(ConfigOption.AUTO_TRIM.getType());
+    }
+
+    public static String createCharStyleKey(Text text) {
+        return String.join(";",
+                    String.valueOf(text.getFontSize()),
+                    String.valueOf(text.getFontColor()),
+                    String.valueOf(text.getFontFamily()),
+                    String.valueOf(text.getBackgroundColor()),
+                    String.valueOf(text.isBold()),
+                    String.valueOf(text.isItalic()),
+                    String.valueOf(text.isUnderLine()),
+                    String.valueOf(text.isStrikeOut()),
+                    String.valueOf(text.isOutline()),
+                    String.valueOf(text.isShadow()),
+                    String.valueOf(text.isEmboss()),
+                    String.valueOf(text.isEngrave())
+                );
+    }
+
+    public static String createParaStyleKey(Align align) {
+        return String.join(";",
+                String.valueOf(align)
+               );
     }
 }

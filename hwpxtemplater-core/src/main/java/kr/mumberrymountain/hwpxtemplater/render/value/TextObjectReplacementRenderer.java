@@ -55,7 +55,7 @@ public class TextObjectReplacementRenderer implements ValueReplacementRenderer {
     public void renderReplacement() {
         placeHolder.t().clear();
         placeHolder.t().addText(value.getValue());
-        linkedRunItem.parent().data().charPrIDRef(rootRenderer.styleRenderer().renderTextStyleAndReturnCharPrId(value));
+        linkedRunItem.parent().data().charPrIDRef(rootRenderer.styleRenderer().renderCharStyleAndReturnCharPrId(value));
 
         if (RendererUtil.isCurrentRangeProcessing(rangeStack.current())) rangeStack.add(linkedRunItem.parent(), placeHolder);
     }
