@@ -3,6 +3,7 @@ package kr.mumberrymountain.hwpxtemplater.render.value;
 import kr.mumberrymountain.hwpxtemplater.interceptor.InterceptorType;
 import kr.mumberrymountain.hwpxtemplater.interceptor.NullValueInterceptor;
 import kr.mumberrymountain.hwpxtemplater.interceptor.ValueInterceptor;
+import kr.mumberrymountain.hwpxtemplater.interceptor.ValueStylingInterceptor;
 import kr.mumberrymountain.hwpxtemplater.linkedobj.LinkedRunItem;
 import kr.mumberrymountain.hwpxtemplater.model.Text;
 import kr.mumberrymountain.hwpxtemplater.render.HWPXRenderer;
@@ -11,7 +12,7 @@ import kr.mumberrymountain.hwpxtemplater.render.placeholder.PlaceHolder;
 import kr.mumberrymountain.hwpxtemplater.render.placeholder.PlaceHolderRangeStack;
 
 public class TextObjectReplacementRenderer implements ValueReplacementRenderer {
-    private final Text value;
+    private Text value;
     private final LinkedRunItem linkedRunItem;
     private final PlaceHolder placeHolder;
     private final HWPXRenderer rootRenderer;
@@ -29,6 +30,7 @@ public class TextObjectReplacementRenderer implements ValueReplacementRenderer {
     public void render() {
         if(value.getValue() == null) executeNullValueInterceptor();
         executeValueInterceptor();
+        executeValueStylingInterceptor();
         if (value.getValue() == null) return;
         executeTrim();
         renderReplacement();
@@ -44,6 +46,11 @@ public class TextObjectReplacementRenderer implements ValueReplacementRenderer {
     public void executeValueInterceptor() {
         ValueInterceptor valueInterceptor = (ValueInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.ValueInterceptor);
         if (valueInterceptor != null) value.setValue(valueInterceptor.intercept(value.getValue(), placeHolder.data()));
+    }
+
+    public void executeValueStylingInterceptor() {
+        ValueStylingInterceptor valueStylingInterceptor = (ValueStylingInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.ValueStylingInterceptor);
+        if (valueStylingInterceptor != null) value = valueStylingInterceptor.intercept(value, placeHolder.data());
     }
 
     @Override
