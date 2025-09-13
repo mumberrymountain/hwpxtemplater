@@ -39,9 +39,9 @@ public class RendererUtil {
     public static String createCharStyleKey(Text text) {
         return String.join(";",
                     String.valueOf(text.getFontSize()),
-                    text.getFontColor(),
-                    text.getFontFamily(),
-                    text.getBackgroundColor(),
+                    String.valueOf(text.getFontColor()),
+                    String.valueOf(text.getFontFamily()),
+                    String.valueOf(text.getBackgroundColor()),
                     String.valueOf(text.isBold()),
                     String.valueOf(text.isItalic()),
                     String.valueOf(text.isUnderLine()),

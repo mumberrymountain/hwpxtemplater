@@ -39,6 +39,7 @@ public class StyleRenderer {
     }
 
     public String renderParaStyleAndReturnParaPrId(Align align) {
+        if (align == null) align = Align.Left;
         String key = RendererUtil.createParaStyleKey(align);
         if (paraPrs.containsKey(key)) return paraPrs.get(key).id();
 

@@ -18,6 +18,11 @@ public class ParaPrRenderer {
     }
 
     private void setHorizontalAlign(Align align){
+        if (align == null) {
+            horizontalAlign = HorizontalAlign2.LEFT;
+            return;
+        }
+
         switch (align) {
             case Left:
                 horizontalAlign = HorizontalAlign2.LEFT;
@@ -29,7 +34,7 @@ public class ParaPrRenderer {
                 horizontalAlign = HorizontalAlign2.RIGHT;
                 break;
             default:
-                horizontalAlign = HorizontalAlign2.CENTER;
+                horizontalAlign = HorizontalAlign2.LEFT;
         }
     }
 
