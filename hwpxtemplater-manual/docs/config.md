@@ -17,14 +17,17 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 <br>
 
-### **3.2 delimPrefix**
+### **3.2 ConfigOption.DELIM_PREFIX**
 ---
 
 <br>
 
 ```java
+import kr.mumberrymountain.hwpxtemplater.ConfigOption;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config("delimPrefix", "[[") // 템플릿 문법의 기본 prefix를 [[로 대체
+                .config(ConfigOption.DELIM_PREFIX, "[[") // 템플릿 문법의 기본 prefix를 [[로 대체
                 .parse("./hwpxtemplater.hwpx")
 
                 ...
@@ -36,18 +39,21 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 렌더링하고 싶은 데이터에 `{`가 포함될 경우 유용합니다.
 
-**제약사항: `delimPrefix`는 두 문자보다 길게 설정할 수 없습니다.**
+**제약사항: `ConfigOption.DELIM_PREFIX`는 두 문자보다 길게 설정할 수 없습니다.**
 
 <br>
 
-### **3.3 delimPostfix**
+### **3.3 ConfigOption.DELIM_SUFFIX**
 ---
 
 <br>
 
 ```java
+import kr.mumberrymountain.hwpxtemplater.ConfigOption;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config("delimSuffix", "]]") // 템플릿 문법의 기본 suffix를 [[로 대체
+                .config(ConfigOption.DELIM_SUFFIX, "]]") // 템플릿 문법의 기본 suffix를 [[로 대체
                 .parse("./hwpxtemplater.hwpx")
 
                 ...
@@ -59,16 +65,17 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 렌더링하고 싶은 데이터에 `{`가 포함될 경우 유용합니다.
 
-**제약사항: `delimSuffix`는 두 문자보다 길게 설정할 수 없습니다.**
+**제약사항: `ConfigOption.DELIM_SUFFIX`는 두 문자보다 길게 설정할 수 없습니다.**
 
 <br>
 
-### **3.3 charRoleSetter**
+### **3.3 ConfigOption.CHAR_ROLE_SETTER**
 ---
 
 <br>
 
 ```java
+import kr.mumberrymountain.hwpxtemplater.ConfigOption;
 import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
 import kr.mumberrymountain.hwpxtemplater.model.CharRole;
 
@@ -76,7 +83,7 @@ CharRole charRole = new CharRole();
 charRole.set(PlaceHolderType.CONDITION, '+'); // 조건문 태그를 판별할 때 사용되는 ? 문자를 다른 문자로 + 문자로 대체
 
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                                .config("charRoleSetter", charRole)
+                                .config(ConfigOption.CHAR_ROLE_SETTER, charRole)
 
                                 ...
 ```
@@ -101,14 +108,17 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 <br>
 
-### **3.4 autoTrim**
+### **3.4 ConfigOption.AUTO_TRIM**
 ---
 
 <br>
 
 ```java
+import kr.mumberrymountain.hwpxtemplater.ConfigOption;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config("autoTrim", true) // 데이터를 양쪽의 공백을 자동으로 trim처리
+                .config(ConfigOption.AUTO_TRIM, true) // 데이터를 양쪽의 공백을 자동으로 trim처리
                 .parse("./hwpxtemplater.hwpx")
                 .render(new HashMap<String, Object>() {{
                     put("data", "    데이터     "); // 양쪽의 공백을 제거하여 렌더링함
