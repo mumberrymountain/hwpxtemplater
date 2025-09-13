@@ -85,6 +85,11 @@ public class HWPXTemplater {
 
         private HWPXTemplater hwpxTemplater;
 
+        public builder config(ConfigOption key, Object value){
+            config.set(key, value);
+            return this;
+        }
+
         public builder config(String key, Object value){
             config.set(key, value);
             return this;

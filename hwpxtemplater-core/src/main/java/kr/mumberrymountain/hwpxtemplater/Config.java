@@ -21,6 +21,9 @@ public class Config {
         return this;
     }
 
+    public void set(ConfigOption opt, Object value) {
+        properties.put(opt.getType(), value);
+    }
     public void set(String key, Object value) {
         properties.put(key, value);
     }

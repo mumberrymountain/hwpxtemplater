@@ -7,6 +7,7 @@ import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.object.Picture;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.object.table.Tc;
 import kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.object.table.Tr;
 import kr.dogfoot.hwpxlib.tool.finder.ObjectFinder;
+import kr.mumberrymountain.hwpxtemplater.ConfigOption;
 import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
 import kr.mumberrymountain.hwpxtemplater.model.CharRole;
 import kr.mumberrymountain.hwpxtemplater.model.table.Col;
@@ -220,6 +221,35 @@ public class CharRoleSetter {
                     = (kr.dogfoot.hwpxlib.object.content.section_xml.paragraph.object.Table) results[i].thisObject();
             assertEquals(getTableText(table), result);
         }
+    }
+
+    @Test
+    @DisplayName("5. charRoleSetter Configuration 옵션 적용 - config ConfigOption Enum으로 설정")
+    public void charRoleSetterConditionTestConfigOptionEnum() throws Exception {
+
+        CharRole charRole = new CharRole();
+        charRole.set(PlaceHolderType.CONDITION, '+');
+
+        HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                .config(ConfigOption.CHAR_ROLE_SETTER, charRole)
+                .parse(TestUtil.getFilePath(this.getClass(), "hwpx/config/Config_CharRoleSetter_Condition.hwpx"))
+                .render(new HashMap<String, Object>() {{
+                    put("Render1", false);
+                    put("Render2", true);
+                }});
+
+        ObjectFinder.Result[] results = ObjectFinder.find(hwpxTemplater.getFile(), new ParaTFilter(), false);
+        ArrayList<String> texts = new ArrayList<>();
+        List<String> expectedResults = Arrays.asList(
+                "참"
+        );
+
+        for (int i = 0; i < results.length; i++) {
+            T text = (T) results[i].thisObject();
+            texts.add(text.onlyText());
+        }
+
+        assertEquals(texts, expectedResults);
     }
 
     private void validateImageWidthAndHeight(Picture picture, int width, int height) {
