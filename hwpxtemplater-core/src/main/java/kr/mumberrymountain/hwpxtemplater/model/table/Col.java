@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 public class Col {
     private int width = 100;
-    private Align align = Align.Left;
+    private Align align;
 
     private String name;
 

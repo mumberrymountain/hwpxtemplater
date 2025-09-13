@@ -7,6 +7,7 @@ public class Cell {
     private String backgroundColor = "None";
     private boolean border = true;
     private String borderColor = "#000000";
+    private Align align;
 
     public Cell(String value) {
         text = new Text(value);
@@ -36,6 +37,11 @@ public class Cell {
         return this;
     }
 
+    public Cell align(Align align){
+        this.align = align;
+        return this;
+    }
+
     public String getBackgroundColor() {
         return backgroundColor;
     }
@@ -58,5 +64,9 @@ public class Cell {
 
     public String getBorderColor(){
         return borderColor;
+    }
+
+    public Align getAlign(){
+        return align;
     }
 }
