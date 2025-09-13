@@ -13,6 +13,9 @@ public class InterceptorHandler {
             case NullValueInterceptor:
                 interceptorMap.put(InterceptorType.NullValueInterceptor, interceptor);
                 break;
+            case ValueStylingInterceptor:
+                interceptorMap.put(InterceptorType.ValueStylingInterceptor, interceptor);
+                break;
         }
 
         return this;
@@ -27,6 +30,8 @@ public class InterceptorHandler {
             return InterceptorType.ValueInterceptor;
         } else if (interceptor instanceof  NullValueInterceptor) {
             return InterceptorType.NullValueInterceptor;
+        } else if (interceptor instanceof ValueStylingInterceptor) {
+            return InterceptorType.ValueStylingInterceptor;
         } else {
             throw new IllegalArgumentException("Unknown interceptor type: " + interceptor.getClass());
         }
