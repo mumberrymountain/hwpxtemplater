@@ -50,7 +50,10 @@ public class TextObjectReplacementRenderer implements ValueReplacementRenderer {
 
     public void executeValueStylingInterceptor() {
         ValueStylingInterceptor valueStylingInterceptor = (ValueStylingInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.ValueStylingInterceptor);
-        if (valueStylingInterceptor != null) value = valueStylingInterceptor.intercept(value, placeHolder.data());
+        if (valueStylingInterceptor != null) {
+            Text result = valueStylingInterceptor.intercept(value, placeHolder.data());
+            if (result != null) value = result;
+        }
     }
 
     @Override

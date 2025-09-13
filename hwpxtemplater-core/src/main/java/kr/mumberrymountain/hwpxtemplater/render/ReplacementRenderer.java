@@ -27,7 +27,7 @@ public class ReplacementRenderer<H> implements SinglePlaceHolderRenderer {
 
         // ValueStylingInterceptor를 사용하는 경우에는 value 값을 Text 객체로 변환 처리한다.
         ValueStylingInterceptor valueStylingInterceptor = (ValueStylingInterceptor) rootRenderer.interceptorHandler().get(InterceptorType.ValueStylingInterceptor);
-        if (valueStylingInterceptor != null && !(value instanceof Text)) value = new Text(String.valueOf(value));
+        if (valueStylingInterceptor != null && value != null && !(value instanceof Text)) value = new Text(String.valueOf(value));
 
         ValueReplacementRendererFactory.create(value, linkedRunItem, placeHolder, rootRenderer, rangeStack).render();
     }
