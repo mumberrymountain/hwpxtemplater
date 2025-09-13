@@ -224,7 +224,7 @@ public class CharRoleSetter {
     }
 
     @Test
-    @DisplayName("1. chartRoleSetter Configuration 옵션 적용 - config ConfigOption Enum으로 설정")
+    @DisplayName("5. charRoleSetter Configuration 옵션 적용 - config ConfigOption Enum으로 설정")
     public void charRoleSetterConditionTestConfigOptionEnum() throws Exception {
 
         CharRole charRole = new CharRole();

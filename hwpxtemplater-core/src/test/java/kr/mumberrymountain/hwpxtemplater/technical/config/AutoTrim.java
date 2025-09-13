@@ -74,7 +74,7 @@ public class AutoTrim {
             texts.add(text.onlyText());
         }
 
-        assertEquals(texts, expectedResults);
+        assertEquals(expectedResults, texts);
     }
 
     @Test
@@ -130,6 +130,6 @@ public class AutoTrim {
             texts.add(text.onlyText());
         }
 
-        assertEquals(texts, expectedResults);
+        assertEquals(expectedResults, texts);
     }
 }

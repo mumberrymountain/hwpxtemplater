@@ -51,11 +51,11 @@ public class DelimPara {
             texts.add(text.onlyText());
         }
 
-        assertEquals(texts, expectedResults);
+        assertEquals(expectedResults, texts);
     }
 
     @Test
-    @DisplayName("1. delimPrefix, delimSuffix Configuration 옵션 적용 - config ConfigOption Enum으로 설정")
+    @DisplayName("2. delimPrefix, delimSuffix Configuration 옵션 적용 - config ConfigOption Enum으로 설정")
     public void configDelimOneCharTestConfigOptionEnum() throws Exception {
 
         HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
@@ -87,6 +87,6 @@ public class DelimPara {
             texts.add(text.onlyText());
         }
 
-        assertEquals(texts, expectedResults);
+        assertEquals(expectedResults, texts);
     }
 }
