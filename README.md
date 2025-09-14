@@ -14,6 +14,7 @@ HWPXTemplater는 HWPX 템플릿 파일을 기반으로 데이터를 주입하여
 
 - HWPXTemplater를 사용하시려면 반드시 Java8, 혹은 높은 버전의 자바를 사용하셔야 됩니다.
 
+
 ## 📦 설치
 
 빌드 도구로 maven을 사용하시는 경우에는 아래의 dependency를 pom.xml 파일에 추가해주세요.
@@ -234,6 +235,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 ## ⚙️ 기본 설정
 
+&nbsp;
 ### ConfigOption.DELIM_PREFIX
 ```java
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
@@ -246,6 +248,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 **제약사항: ConfigOption.DELIM_PREFIX는 두 문자보다 길게 설정할 수 없습니다.**
 
+&nbsp;
 ### ConfigOption.DELIM_SUFFIX
 ```java
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
@@ -258,6 +261,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 **제약사항: ConfigOption.DELIM_SUFFIX는 두 문자보다 길게 설정할 수 없습니다.**
 
+&nbsp;
 ### ConfigOption.CHAR_ROLE_SETTER
 ```java
 CharRole charRole = new CharRole();
@@ -283,6 +287,7 @@ CharRole 모델을 이용해 Key 값으로 PlaceHolderType를, Value 값으로 �
 | PlaceHolderType.IMAGE_REPLACEMENT         | 이미지 태그 식별자   | $|
 | PlaceHolderType.TABLE_REPLACEMENT         | 테이블 태그 식별자  | @|
 
+&nbsp;
 ### ConfigOption.AUTO_TRIM
 ```java
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
@@ -298,6 +303,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 
 ## 🎯 인터셉터
 
+&nbsp;
 ### ValueInterceptor
 데이터 렌더링 전 값을 가로채어 가공할 수 있습니다.
 
@@ -332,6 +338,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 | value        | String     | 현재 렌더링이 이뤄지는 필드에 들어온 데이터 값 |
 | field     | String   | 현재 렌더링이 이뤄지고 있는 템플릿 내 필드|
 
+&nbsp;
 ### NullValueInterceptor
 null 값에 대해서만 특별한 처리를 할 수 있습니다.
 
