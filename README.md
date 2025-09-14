@@ -12,9 +12,11 @@ HWPXTemplater는 HWPX 템플릿 파일을 기반으로 데이터를 주입하여
 
 ## 📋 요구사양
 
-- Java 8 이상
+- HWPXTemplater를 사용하시려면 반드시 Java8, 혹은 높은 버전의 자바를 사용하셔야 됩니다.
 
 ## 📦 설치
+
+빌드 도구로 maven을 사용하시는 경우에는 아래의 dependency를 pom.xml 파일에 추가해주세요.
 
 ### Maven
 ```xml
@@ -24,26 +26,11 @@ HWPXTemplater는 HWPX 템플릿 파일을 기반으로 데이터를 주입하여
 </dependency>
 ```
 
+gradle을 사용하시는 경우에는 아래의 implementation을 build.gradle 파일에 추가해주세요.
+
 ### Gradle
 ```gradle
 implementation 'com.mumberrymountain:hwpxtemplater'
-```
-
-## 🏃‍♂️ 빠른 시작
-
-1. **템플릿 파일 생성**: `hwpxtemplater.hwpx` 파일을 만들고 `{{hwpxTemplater}}` 필드를 추가합니다.
-
-2. **Java 코드 작성**:
-```java
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import java.util.HashMap;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-    .parse("./hwpxtemplater.hwpx")
-    .render(new HashMap<String, Object>() {{
-        put("hwpxTemplater", "hwpxTemplater은 hwpx 템플릿 파일을 기반으로 데이터를 주입하여 hwpx 파일을 생성하는 라이브러리입니다.");
-    }})
-    .write(response.getOutputStream());
 ```
 
 ## 🏷️ 템플릿 태그
@@ -55,14 +42,24 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 **용도**: 기본적인 텍스트 데이터를 HWPX 파일에 렌더링하는 가장 기본적인 태그입니다.
 
 **사용법**: 
-- 템플릿 파일에 `{{hangul}}` 형태로 작성
-- Java 코드에서 해당 키에 문자열 값을 매핑
-- 렌더링 시 태그가 실제 데이터로 치환됩니다
+- 템플릿 파일에 `{{name}}` 형태로 작성합니다.
+- Java 코드에서 해당 키에 문자열 값을 매핑합니다.
+- 렌더링 시 태그가 실제 데이터로 치환됩니다.
 
 **예시**:
 ```java
 // 템플릿: {{name}}님 안녕하세요!
-put("name", "홍길동");
+import javax.servlet.http.HttpServletResponse;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+import java.util.*;
+
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                    .parse("./hwpxtemplater.hwpx")
+                    .render(new HashMap<String, Object>() {{
+                        put("name", "홍길동");
+                    }})
+                    .write(response.getOutputStream());
+
 // 결과: 홍길동님 안녕하세요!
 ```
 
@@ -87,9 +84,18 @@ put("name", "홍길동");
 // 운송장 번호: {{trackingNumber}}
 // {{/hasTrackingNumber}}
 
-put("status", "배송중");
-put("hasTrackingNumber", true);
-put("trackingNumber", "1234-5678-9012");
+import javax.servlet.http.HttpServletResponse;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+import java.util.*;
+
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                            .parse("./hwpxtemplater.hwpx")
+                            .render(new HashMap<String, Object>() {{
+                                put("status", "배송중");
+                                put("hasTrackingNumber", true);
+                                put("trackingNumber", "1234-5678-9012");
+                            }})
+                            .write(response.getOutputStream());
 
 // 결과: 
 // 상태: 배송중
@@ -111,6 +117,10 @@ put("trackingNumber", "1234-5678-9012");
 
 **예시**:
 ```java
+import javax.servlet.http.HttpServletResponse;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+import java.util.*;
+
 // 템플릿:
 // {{#products}}
 // - {{name}}: {{price}}원
@@ -125,7 +135,13 @@ products.add(new HashMap<String, Object>() {{
     put("name", "바나나");
     put("price", 700);
 }});
-put("products", products);
+
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+        .parse("./hwpxtemplater.hwpx")
+        .render(new HashMap<String, Object>() {{
+            put("products", products);
+        }})
+        .write(response.getOutputStream());
 
 // 결과:
 // - 사과: 1500원
@@ -147,13 +163,27 @@ put("products", products);
 
 **예시**:
 ```java
-// 템플릿: {{$countryFlag}}
+import javax.servlet.http.HttpServletResponse;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+import java.util.*;
+
+// 템플릿: {{$flag}}
 
 // 방법 1: 경로 문자열 사용
-put("countryFlag", "images/korea.png");
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                    .parse("./hwpxtemplater.hwpx")
+                    .render(new HashMap<String, Object>() {{
+                        put("flag", "images/korea.png");
+                    }})
+                    .write(response.getOutputStream());
 
 // 방법 2: Image 모델 사용 (크기 지정 가능)
-put("countryFlag", new Image("images/korea.png").width(50).height(50));
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                    .parse("./hwpxtemplater.hwpx")
+                    .render(new HashMap<String, Object>() {{
+                        put("flag", new Image("images/korea.png").width(50).height(50));
+                    }})
+                    .write(response.getOutputStream());
 ```
 
 ### 테이블 태그
@@ -167,13 +197,13 @@ put("countryFlag", new Image("images/korea.png").width(50).height(50));
 - 열(Column) 정의와 행(Row) 데이터를 기반으로 표를 생성합니다
 - 각 열의 너비, 데이터 타입 등을 세밀하게 제어할 수 있습니다
 
-**특징**:
-- 동적인 행 개수 지원
-- 열별 너비 설정 가능
-- null 값 자동 처리
-
 **예시**:
 ```java
+import javax.servlet.http.HttpServletResponse;
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+import kr.mumberrymountain.hwpxtemplater.model.table.Col;
+import kr.mumberrymountain.hwpxtemplater.model.table.Table;
+
 // 템플릿: {{@scoreTable}}
 
 Table table = Table.builder()
@@ -194,29 +224,41 @@ Table table = Table.builder()
     }})
     .create();
 
-put("scoreTable", table);
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                    .parse("./hwpxtemplater.hwpx")
+                    .render(new HashMap<String, Object>() {{
+                        put("scoreTable", table);
+                    }})
+                    .write(response.getOutputStream());
 ```
 
 ## ⚙️ 기본 설정
 
-### 구분자 변경
+### ConfigOption.DELIM_PREFIX
 ```java
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
     .config(ConfigOption.DELIM_PREFIX, "[[")
-    .config(ConfigOption.DELIM_SUFFIX, "]]")
     .parse("./template.hwpx")
     // ...
 ```
 
-### 자동 트림
+기본 템플릿 문법으로 사용되는 {{ 데이터 }} 형태에서 {{를 다른 문자열로 대체하고 싶은 경우 사용하는 옵션입니다.
+
+**제약사항: ConfigOption.DELIM_PREFIX는 두 문자보다 길게 설정할 수 없습니다.**
+
+### ConfigOption.DELIM_SUFFIX
 ```java
 HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-    .config(ConfigOption.AUTO_TRIM, true)
+    .config(ConfigOption.DELIM_PREFIX, "[[")
     .parse("./template.hwpx")
     // ...
 ```
 
-### 역할 식별자 변경
+기본 템플릿 문법으로 사용되는 {{ 데이터 }} 형태에서 }}를 다른 문자열로 대체하고 싶은 경우 사용하는 옵션입니다.
+
+**제약사항: ConfigOption.DELIM_SUFFIX는 두 문자보다 길게 설정할 수 없습니다.**
+
+### ConfigOption.CHAR_ROLE_SETTER
 ```java
 CharRole charRole = new CharRole();
 charRole.set(PlaceHolderType.CONDITION, '+');
@@ -227,12 +269,46 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
     // ...
 ```
 
+조건문 태그를 판별할 때 사용되는 ?, 반복문 태그를 판별할 때 사용되는 # 등 특정 태그가 어떤 태그인지 판별할 때 사용되는 역할 식별 문자를 디폴트 문자가 아닌 다른 문자로 설정하고 싶을 때 사용하는 옵션입니다.
+
+CharRole 모델을 이용해 Key 값으로 PlaceHolderType를, Value 값으로 문자를 넣어 인스턴스를 생성한 뒤 파라미터로 기입해 해당 옵션을 설정할 수 있습니다.
+
+세팅할 수 있는 PlaceHolderType으로는 아래와 같은 것들이 있습니다.
+
+| PlaceHolderType                   | 태그         | 디폴트 식별자|
+|----------------------|--------------|---------------------|
+| PlaceHolderType.CONDITION        | 조건문 태그 식별자     |?|
+| PlaceHolderType.LOOP     | 반복문 태그 식별자   |#|
+| PlaceHolderType.CLOSURE | 반복문 태그 식별자  | /|
+| PlaceHolderType.IMAGE_REPLACEMENT         | 이미지 태그 식별자   | $|
+| PlaceHolderType.TABLE_REPLACEMENT         | 테이블 태그 식별자  | @|
+
+### ConfigOption.AUTO_TRIM
+```java
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+                .config(ConfigOption.AUTO_TRIM, true) // 데이터를 양쪽의 공백을 자동으로 trim처리
+                .parse("./hwpxtemplater.hwpx")
+                .render(new HashMap<String, Object>() {{
+                    put("data", "    데이터     "); // 양쪽의 공백을 제거하여 렌더링함
+                    }}
+                );
+```
+
+템플릿 파일에 데이터를 렌더링할 때 데이터 양옆의 공백을 자동으로 제거하여 렌더링하고 싶은 경우 사용하는 옵션입니다.
+
 ## 🎯 인터셉터
 
 ### ValueInterceptor
 데이터 렌더링 전 값을 가로채어 가공할 수 있습니다.
 
 ```java
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+import kr.mumberrymountain.hwpxtemplater.interceptor.Interceptor;
+import kr.mumberrymountain.hwpxtemplater.interceptor.ValueInterceptor;
+
+import java.text.NumberFormat;
+import java.util.*;
+
 Interceptor valueInterceptor = new ValueInterceptor() {
     @Override
     public String intercept(String value, String field) {
@@ -249,10 +325,24 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
     // ...
 ```
 
+콜백의 파라미터는 아래와 같습니다. 
+
+| 이름                   | 타입         | 설명 |
+|----------------------|--------------|---------------------|
+| value        | String     | 현재 렌더링이 이뤄지는 필드에 들어온 데이터 값 |
+| field     | String   | 현재 렌더링이 이뤄지고 있는 템플릿 내 필드|
+
 ### NullValueInterceptor
 null 값에 대해서만 특별한 처리를 할 수 있습니다.
 
 ```java
+import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
+import kr.mumberrymountain.hwpxtemplater.interceptor.Interceptor;
+import kr.mumberrymountain.hwpxtemplater.interceptor.NullValueInterceptor;
+
+import java.text.NumberFormat;
+import java.util.*;
+
 Interceptor nullValueInterceptor = new NullValueInterceptor() {
     @Override
     public String intercept(String value, String field) {
@@ -260,7 +350,21 @@ Interceptor nullValueInterceptor = new NullValueInterceptor() {
         return value;
     }
 };
+
+HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
+        .interceptor(nullValueInterceptor)
+        .parse("./hwpxtemplater.hwpx")
+        
+        ...
+
 ```
+
+콜백의 파라미터는 아래와 같습니다. 
+
+| 파라미터                   | 타입         | 설명  |
+|----------------------|--------------|---------------------|
+| value        | String     | 현재 렌더링이 이뤄지는 필드에 들어온 데이터 값 |
+| field     | String   | 현재 렌더링이 이뤄지고 있는 템플릿 내 필드|
 
 ## 📊 데이터 모델
 
