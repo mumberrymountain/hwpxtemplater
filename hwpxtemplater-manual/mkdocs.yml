@@ -1,4 +1,6 @@
 site_name: hwpxTemplater
+site_url: https://mumberrymountain.github.io/hwpxtemplater/
+site_description: HwpxTemplater 사용 매뉴얼
 repo_url: https://github.com/mumberrymountain/hwpxtemplater
 repo_name: hwpxTemplater
 theme:
