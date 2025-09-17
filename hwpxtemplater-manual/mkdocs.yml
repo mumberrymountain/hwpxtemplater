@@ -22,7 +22,7 @@ theme:
   font:
     text: Noto Sans Korean
 
-  logo: image/HwpxTemplater-logo.svg
+  logo: image/hwpxTemplater-logo.svg
 
 nav:
   - "1. 시작하기": index.md
