@@ -607,17 +607,17 @@
 </tbody>
 </table>
 <p>예를 들어 위처럼 hwpx 템플릿 파일에 <code>{{hangul}}</code>이라는 필드가 있다고 가정합시다. <br></p>
-<pre><code class="language-java">import javax.servlet.http.HttpServletResponse;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import java.util.*;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                    .parse(&quot;./hwpxtemplater.hwpx&quot;)
-                    .render(new HashMap&lt;String, Object&gt;() {{
-                        put(&quot;hangul&quot;, &quot;한글&quot;);
-                    }})
-                    .write(response.getOutputStream());
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">                    </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                    </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;hangul&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;한글&quot;</span><span class="p">);</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                    </span><span class="p">}})</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                    </span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+</span></code></pre></div>
 <p><br></p>
 <p>해당 key에 해당하는 데이터로 <code>한글</code>을 설정할 경우</p>
 <p><br></p>
@@ -651,19 +651,19 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 </tbody>
 </table>
 <p>예를 들어 위처럼 템플릿 파일에 <code>hasTrackingNumber</code>라는 조건문 태그가 있고, 태그 내부에 <code>운송장 번호: {{trackingNumber}}</code>라는 데이터 및 기본 태그가 포함되어 있다고 가정합시다. <br></p>
-<pre><code class="language-java">import javax.servlet.http.HttpServletResponse;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import java.util.*;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                            .parse(&quot;./hwpxtemplater.hwpx&quot;)
-                            .render(new HashMap&lt;String, Object&gt;() {{
-                                put(&quot;status&quot;, &quot;배송중&quot;);
-                                put(&quot;hasTrackingNumber&quot;, true);
-                                put(&quot;trackingNumber&quot;, &quot;1234-5678-9012&quot;);
-                            }})
-                            .write(response.getOutputStream());
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">                            </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">                            </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">                                </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;배송중&quot;</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">                                </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;hasTrackingNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">                                </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;trackingNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1234-5678-9012&quot;</span><span class="p">);</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">                            </span><span class="p">}})</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">                            </span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+</span></code></pre></div>
 <p><br></p>
 <p>이때 조건문 태그 <code>hasTrackingNumber</code>의 데이터 값이 true라면 </p>
 <p><br></p>
@@ -682,19 +682,19 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 <p><br></p>
 <p>이미지처럼 <code>hasTrackingNumber</code> 태그 내부 데이터가 기본 태그까지 채워져 정상적으로 렌더링이 될 것입니다. </p>
 <p><br></p>
-<pre><code class="language-java">import javax.servlet.http.HttpServletResponse;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import java.util.*;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                            .parse(&quot;./hwpxtemplater.hwpx&quot;)
-                            .render(new HashMap&lt;String, Object&gt;() {{
-                                put(&quot;status&quot;, &quot;배송중&quot;);
-                                put(&quot;hasTrackingNumber&quot;, false);
-                                put(&quot;trackingNumber&quot;, &quot;1234-5678-9012&quot;);
-                            }})
-                            .write(response.getOutputStream());
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                            </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                            </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                                </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;배송중&quot;</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                                </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;hasTrackingNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                                </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;trackingNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1234-5678-9012&quot;</span><span class="p">);</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                            </span><span class="p">}})</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">                            </span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+</span></code></pre></div>
 <p><br></p>
 <p>반면 앞서와 달리 조건문 태그 <code>hasTrackingNumber</code>의 데이터 값이 false인 경우  </p>
 <p><br></p>
@@ -731,32 +731,32 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 </table>
 <p>예를 들어 이미지처럼 <code>products</code> 반복문 태그 내 <code>name</code>이라는 태그와 <code>price</code>라는 태그가 있다고 가정합시다. </p>
 <p><br></p>
-<pre><code class="language-java">import javax.servlet.http.HttpServletResponse;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import java.util.*;
-
-ArrayList&lt;HashMap&lt;String, Object&gt;&gt; products = new ArrayList&lt;&gt;();
-
-Object[][] datas = {
-        {&quot;사과&quot;, 1500},
-        {&quot;바나나&quot;, 700},
-        {&quot;오렌지&quot;, 1200}
-};
-
-for (Object[] data : datas) {
-    HashMap&lt;String, Object&gt; product = new HashMap&lt;&gt;();
-    product.put(&quot;name&quot;, data[0]);
-    product.put(&quot;price&quot;, data[1]);
-    products.add(product);
-}
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-        .parse(&quot;./hwpxtemplater.hwpx&quot;)
-        .render(new HashMap&lt;String, Object&gt;() {{
-            put(&quot;products&quot;, products);
-        }})
-        .write(response.getOutputStream());
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">Object</span><span class="o">[][]</span><span class="w"> </span><span class="n">datas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="p">{</span><span class="s">&quot;사과&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1500</span><span class="p">},</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="p">{</span><span class="s">&quot;바나나&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">700</span><span class="p">},</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="p">{</span><span class="s">&quot;오렌지&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="p">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">};</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">datas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">product</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="n">product</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;price&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="n">products</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">product</span><span class="p">);</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="p">}</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">            </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;products&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">products</span><span class="p">);</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="p">}})</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">        </span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+</span></code></pre></div>
 <p><br></p>
 <p>이때 위 코드에서처럼 <code>products</code>라는 반복문 태그에 <code>name</code> 데이터와 <code>price</code> 데이터가 포함된 <code>List</code> 데이터를 넣으면</p>
 <p><br></p>
@@ -794,19 +794,19 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 <p><br></p>
 <p>예를 들어 위 이미지와 같이 이미지 태그를 넣고 </p>
 <p><br></p>
-<pre><code class="language-java">import javax.servlet.http.HttpServletResponse;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import java.util.*;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                    .parse(&quot;./hwpxtemplater.hwpx&quot;)
-                    .render(new HashMap&lt;String, Object&gt;() {{
-                        put(&quot;korea&quot;, &quot;images/country/png/korea.png&quot;);
-                        put(&quot;spain&quot;, &quot;images/country/png/spain.png&quot;);
-                        put(&quot;belgium&quot;, &quot;images/country/png/belgium.png&quot;);
-                    }})
-                    .write(response.getOutputStream());
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">                    </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">                    </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;korea&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;images/country/png/korea.png&quot;</span><span class="p">);</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;spain&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;images/country/png/spain.png&quot;</span><span class="p">);</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;belgium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;images/country/png/belgium.png&quot;</span><span class="p">);</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">                    </span><span class="p">}})</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">                    </span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+</span></code></pre></div>
 <p><code>korea</code>, <code>spain</code>, <code>belgium</code> 이미지 태그에 각개 적합한 이미지 경로를 기입하면</p>
 <p><br></p>
 <table>
@@ -843,52 +843,52 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 <p><br></p>
 <p>예를 들어 위 이미지와 같이 템플릿에 <code>table</code>이라는 테이블 태그를 기입한 경우 </p>
 <p><br></p>
-<pre><code class="language-java">import javax.servlet.http.HttpServletResponse;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import kr.mumberrymountain.hwpxtemplater.model.table.Col;
-import kr.mumberrymountain.hwpxtemplater.model.table.Table;
-
-Table table = Table.builder()
-                    .cols(
-                            Arrays.asList(
-                                    new Col(&quot;번호&quot;).width(60),
-                                    new Col(&quot;이름&quot;).width(150),
-                                    new Col(&quot;점수&quot;).width(150),
-                                    new Col(&quot;비고&quot;).width(150)
-                            )
-                    )
-                    .row(new HashMap&lt;String, Object&gt;() {{
-                        put(&quot;번호&quot;, &quot;번호&quot;);
-                        put(&quot;이름&quot;, &quot;이름&quot;);
-                        put(&quot;점수&quot;, &quot;점수&quot;);
-                        put(&quot;비고&quot;, &quot;비고&quot;);
-                    }})
-                    .row(new HashMap&lt;String, Object&gt;() {{
-                        put(&quot;번호&quot;, 1);
-                        put(&quot;이름&quot;, &quot;홍길동&quot;);
-                        put(&quot;점수&quot;, 85);
-                        put(&quot;비고&quot;, null);
-                    }})
-                    .row(new HashMap&lt;String, Object&gt;() {{
-                        put(&quot;번호&quot;, 2);
-                        put(&quot;이름&quot;, &quot;김철수&quot;);
-                        put(&quot;점수&quot;,   90);
-                        put(&quot;비고&quot;, &quot;우수 성적&quot;);
-                    }})
-                    .row(new HashMap&lt;String, Object&gt;() {{
-                        put(&quot;번호&quot;, 3);
-                        put(&quot;이름&quot;, &quot;이영희&quot;);
-                        put(&quot;점수&quot;, 78);
-                    }})
-                    .create();
-
-            HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                    .parse(&quot;./hwpxtemplater.hwpx&quot;)
-                    .render(new HashMap&lt;String, Object&gt;() {{
-                        put(&quot;table&quot;, table);
-                    }})
-                    .write(response.getOutputStream());
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.model.table.Col</span><span class="p">;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.model.table.Table</span><span class="p">;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">Table</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Table</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">                    </span><span class="p">.</span><span class="na">cols</span><span class="p">(</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">                            </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">                                    </span><span class="k">new</span><span class="w"> </span><span class="n">Col</span><span class="p">(</span><span class="s">&quot;번호&quot;</span><span class="p">).</span><span class="na">width</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">                                    </span><span class="k">new</span><span class="w"> </span><span class="n">Col</span><span class="p">(</span><span class="s">&quot;이름&quot;</span><span class="p">).</span><span class="na">width</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">                                    </span><span class="k">new</span><span class="w"> </span><span class="n">Col</span><span class="p">(</span><span class="s">&quot;점수&quot;</span><span class="p">).</span><span class="na">width</span><span class="p">(</span><span class="mi">150</span><span class="p">),</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">                                    </span><span class="k">new</span><span class="w"> </span><span class="n">Col</span><span class="p">(</span><span class="s">&quot;비고&quot;</span><span class="p">).</span><span class="na">width</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">                            </span><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">                    </span><span class="p">)</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">                    </span><span class="p">.</span><span class="na">row</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;번호&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;번호&quot;</span><span class="p">);</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;이름&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;이름&quot;</span><span class="p">);</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;점수&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;점수&quot;</span><span class="p">);</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;비고&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;비고&quot;</span><span class="p">);</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">                    </span><span class="p">}})</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">                    </span><span class="p">.</span><span class="na">row</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;번호&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;이름&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;홍길동&quot;</span><span class="p">);</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;점수&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">);</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;비고&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">                    </span><span class="p">}})</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">                    </span><span class="p">.</span><span class="na">row</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;번호&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;이름&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;김철수&quot;</span><span class="p">);</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;점수&quot;</span><span class="p">,</span><span class="w">   </span><span class="mi">90</span><span class="p">);</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;비고&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;우수 성적&quot;</span><span class="p">);</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">                    </span><span class="p">}})</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">                    </span><span class="p">.</span><span class="na">row</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;번호&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;이름&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;이영희&quot;</span><span class="p">);</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;점수&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">78</span><span class="p">);</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">                    </span><span class="p">}})</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">                    </span><span class="p">.</span><span class="na">create</span><span class="p">();</span>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">            </span><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">                    </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">                    </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">                        </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;table&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">table</span><span class="p">);</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">                    </span><span class="p">}})</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">                    </span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+</span></code></pre></div>
 <p><br></p>
 <p>hwpxTemplater에서 제공하는 Table 클래스를 활용해 만든 테이블 인스턴스를 데이터로 기입함으로</p>
 <p><br></p>
@@ -954,7 +954,7 @@ Table table = Table.builder()
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>

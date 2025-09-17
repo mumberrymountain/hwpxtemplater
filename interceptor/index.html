@@ -498,12 +498,12 @@
 
 <h3 id="41"><strong>4.1 개요</strong></h3>
 <hr />
-<pre><code class="language-java">HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .interceptor( ... ) // 인터셉터 등록
-                .parse(&quot;./hwpxtemplater.hwpx&quot;)
-
-                ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">                </span><span class="p">.</span><span class="na">interceptor</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="c1">// 인터셉터 등록</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">                </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                </span><span class="p">...</span>
+</span></code></pre></div>
 <p><br></p>
 <p>사용자는 위와 같이 hwpx 파일을 파싱하는 parse 메서드 호출 전 interceptor 메서드를 통해 특정한 인터셉터를 등록할 수 있습니다.</p>
 <p>인터셉터를 이용하여 <code>hwpxTemplater</code> 내부에서 처리가 이뤄지는 특정 시점을 가로채어 <code>value</code> 값을 변경한다던지 특정한 가공 처리를 해낼 수 있습니다.</p>
@@ -511,27 +511,27 @@
 <p><br></p>
 <h3 id="42-valueinterceptor"><strong>4.2 ValueInterceptor</strong></h3>
 <hr />
-<pre><code class="language-java">import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import kr.mumberrymountain.hwpxtemplater.interceptor.Interceptor;
-import kr.mumberrymountain.hwpxtemplater.interceptor.ValueInterceptor;
-
-import java.text.NumberFormat;
-import java.util.*;
-
-Interceptor valueInterceptor = new ValueInterceptor() {
-    @Override
-    public String intercept(String value, String field) {
-        if (field.equals(&quot;Salary&quot;)) return NumberFormat.getNumberInstance(Locale.KOREA).format(Integer.parseInt(value)) + &quot;만원&quot;; // Salary의 Value 값으로 4000, 3000과 같이 숫자가 넘어올 때 `4000만원`, `3000만원`과 같이 포맷을 일괄 적용합니다.
-        return value;
-    }
-};
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                            .interceptor(valueInterceptor)
-                            .parse(&quot;./hwpxtemplater.hwpx&quot;)
-
-                            ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.interceptor.Interceptor</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.interceptor.ValueInterceptor</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.text.NumberFormat</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">Interceptor</span><span class="w"> </span><span class="n">valueInterceptor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValueInterceptor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">intercept</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">field</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Salary&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">NumberFormat</span><span class="p">.</span><span class="na">getNumberInstance</span><span class="p">(</span><span class="n">Locale</span><span class="p">.</span><span class="na">KOREA</span><span class="p">).</span><span class="na">format</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;만원&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Salary의 Value 값으로 4000, 3000과 같이 숫자가 넘어올 때 `4000만원`, `3000만원`과 같이 포맷을 일괄 적용합니다.</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">};</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                            </span><span class="p">.</span><span class="na">interceptor</span><span class="p">(</span><span class="n">valueInterceptor</span><span class="p">)</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">                            </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">                            </span><span class="p">...</span>
+</span></code></pre></div>
 <p><br></p>
 <p>렌더링이 이뤄지기 전, <code>hwpxTemplater</code>에 파라미터로 기입한 데이터를 가로챌 수 있는 인터셉터입니다. </p>
 <p>이 인터셉터를 통해 특정 조건에 한정하여 <code>value</code> 값을 다른 <code>value</code>로 대체하거나, 혹은 예시와 같이 특정 <code>format</code>을 <code>value</code>에 일괄 적용할 수 있습니다. </p>
@@ -561,27 +561,27 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 <p><br></p>
 <h3 id="43-nullvalueinterceptor"><strong>4.3 NullValueInterceptor</strong></h3>
 <hr />
-<pre><code class="language-java">import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import kr.mumberrymountain.hwpxtemplater.interceptor.Interceptor;
-import kr.mumberrymountain.hwpxtemplater.interceptor.NullValueInterceptor;
-
-import java.text.NumberFormat;
-import java.util.*;
-
-Interceptor nullValueInterceptor = new NullValueInterceptor() {
-            @Override
-            public String intercept(String value, String field) {
-                if (field.equals(&quot;note&quot;)) return &quot;없음&quot;; // note 필드에 데이터가 null로 들어온 경우 &quot;없음&quot;으로 렌더링합니다.
-                return value;
-            }
-        };
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-        .interceptor(nullValueInterceptor)
-        .parse(&quot;./hwpxtemplater.hwpx&quot;)
-
-        ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.interceptor.Interceptor</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.interceptor.NullValueInterceptor</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.text.NumberFormat</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">Interceptor</span><span class="w"> </span><span class="n">nullValueInterceptor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NullValueInterceptor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="nd">@Override</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">intercept</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">field</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;note&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;없음&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// note 필드에 데이터가 null로 들어온 경우 &quot;없음&quot;으로 렌더링합니다.</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="p">};</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="p">.</span><span class="na">interceptor</span><span class="p">(</span><span class="n">nullValueInterceptor</span><span class="p">)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="p">...</span>
+</span></code></pre></div>
 <p><br></p>
 <p>렌더링이 이뤄지기 전, <code>hwpxTemplater</code>에 파라미터로 null로 기입된 데이터를 가로챌 수 있는 인터셉터입니다. </p>
 <p>null 값이 들어간 데이터만 다른 방식으로 렌더링하고 싶은 경우 유용합니다.</p>
@@ -656,7 +656,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>

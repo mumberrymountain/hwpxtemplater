@@ -483,16 +483,16 @@
 <hr />
 <p>빌드 도구로 maven을 사용하시는 경우에는 아래의 dependency를 pom.xml 파일에 추가해주세요. </p>
 <p><br> </p>
-<pre><code class="language-xml">&lt;dependency&gt;
-  &lt;groupId&gt;com.mumberrymountain&lt;/groupId&gt;
-  &lt;artifactId&gt;hwpxtemplater&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&lt;groupId&gt;</span>com.mumberrymountain<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>hwpxtemplater<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div>
 <p><br> </p>
 <p>gradle을 사용하시는 경우에는 아래의 implementation을 build.gradle 파일에 추가해주세요.</p>
 <p><br> </p>
-<pre><code class="language-gradle">implementation 'com.mumberrymountain:hwpxtemplater'
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>implementation &#39;com.mumberrymountain:hwpxtemplater&#39;
+</span></code></pre></div>
 <p><br></p>
 <p>빌드가 잘 이뤄져 <code>hwpxtemplater</code>가 정상적으로 설치되었다면 실제로 <code>hwpxTemplater</code>가 제대로 동작하는지 확인이 필요합니다. <br></p>
 <p>아래 이미지처럼 <code>hwpxtemplater.hwpx</code>라는 이름의 파일을 하나 만든 뒤 <code>{hwpxTemplater}</code>라는 필드를 넣어줍니다. <br> <br></p>
@@ -511,18 +511,18 @@
 <p>파일을 만들었다면 프로젝트의 적절한 경로에 파일을 넣어둔 뒤, 아래 자바 코드를 경로만 적절하게 바꿔 붙여넣기해주세요. <br></p>
 <p>그리고 해당 코드를 실행하여 hwpx 파일을 생성해줍니다. </p>
 <p><br></p>
-<pre><code class="language-java">import javax.servlet.http.HttpServletResponse;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-
-response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename=&quot; + &quot;hwpxtemplater_output.hwpx&quot; + &quot;;&quot;);
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .parse(&quot;./hwpxtemplater.hwpx&quot;) // 프로젝트에서 파일이 위치한 경로를 잡아주세요.
-                .render(new HashMap&lt;String, Object&gt;() {{
-                    put(&quot;hwpxTemplater&quot;, &quot;hwpxTemplater은 hwpx 템플릿 파일을 기반으로 데이터를 주입하여 hwpx 파일을 생성하는 라이브러리입니다.&quot;);
-                }})
-                .write(response.getOutputStream());
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">response</span><span class="p">.</span><span class="na">setHeader</span><span class="p">(</span><span class="s">&quot;Content-Disposition&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;attachment;filename=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;hwpxtemplater_output.hwpx&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 프로젝트에서 파일이 위치한 경로를 잡아주세요.</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                    </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;hwpxTemplater&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hwpxTemplater은 hwpx 템플릿 파일을 기반으로 데이터를 주입하여 hwpx 파일을 생성하는 라이브러리입니다.&quot;</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                </span><span class="p">}})</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                </span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+</span></code></pre></div>
 <p><br></p>
 <p>설치가 정상적으로 이뤄졌다면, 아래와 같이 <code>hwpxTemplater</code> 필드에 데이터가 기입되어 <code>hwpxtemplater_output.hwpx</code>라는 파일이 새롭게 생성된 걸 확인하실 수 있을 겁니다.</p>
 <p><br></p>
@@ -586,7 +586,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>

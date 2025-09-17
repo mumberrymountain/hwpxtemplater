@@ -534,12 +534,12 @@
 
 <h3 id="31"><strong>3.1 개요</strong></h3>
 <hr />
-<pre><code class="language-java">HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config(&quot; ~~ &quot;, &quot; ~~ &quot;) // 기본 설정 세팅
-                .parse(&quot;./hwpxtemplater.hwpx&quot;)
-
-                ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">                </span><span class="p">.</span><span class="na">config</span><span class="p">(</span><span class="s">&quot; ~~ &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; ~~ &quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 기본 설정 세팅</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">                </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                </span><span class="p">...</span>
+</span></code></pre></div>
 <p><br></p>
 <p>사용자는 위와 같이 hwpx 파일을 파싱하는 parse 메서드 호출 전 config 메서드를 통해 <code>hwpxTemplater</code> 사용시 적용할 기본 옵션을 설정할 수 있습니다. </p>
 <p><code>hwpxTemplater</code>의 기본 옵션으로는 아래와 같은 것들이 있습니다. </p>
@@ -547,15 +547,15 @@
 <h3 id="32-configoptiondelim_prefix"><strong>3.2 ConfigOption.DELIM_PREFIX</strong></h3>
 <hr />
 <p><br></p>
-<pre><code class="language-java">import kr.mumberrymountain.hwpxtemplater.ConfigOption;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config(ConfigOption.DELIM_PREFIX, &quot;[[&quot;) // 템플릿 문법의 기본 prefix를 [[로 대체
-                .parse(&quot;./hwpxtemplater.hwpx&quot;)
-
-                ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.ConfigOption</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">                </span><span class="p">.</span><span class="na">config</span><span class="p">(</span><span class="n">ConfigOption</span><span class="p">.</span><span class="na">DELIM_PREFIX</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[[&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 템플릿 문법의 기본 prefix를 [[로 대체</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">                </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">                </span><span class="p">...</span>
+</span></code></pre></div>
 <p><br></p>
 <p><code>hwpxTemplater</code>의 기본 템플릿 문법으로 사용되는 <code>{{ 데이터 }}</code> 형태에서 <code>{{</code>를 다른 문자열로 대체하고 싶은 경우 사용하는 옵션입니다. </p>
 <p>렌더링하고 싶은 데이터에 <code>{</code>가 포함될 경우 유용합니다.</p>
@@ -564,15 +564,15 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 <h3 id="33-configoptiondelim_suffix"><strong>3.3 ConfigOption.DELIM_SUFFIX</strong></h3>
 <hr />
 <p><br></p>
-<pre><code class="language-java">import kr.mumberrymountain.hwpxtemplater.ConfigOption;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config(ConfigOption.DELIM_SUFFIX, &quot;]]&quot;) // 템플릿 문법의 기본 suffix를 [[로 대체
-                .parse(&quot;./hwpxtemplater.hwpx&quot;)
-
-                ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.ConfigOption</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                </span><span class="p">.</span><span class="na">config</span><span class="p">(</span><span class="n">ConfigOption</span><span class="p">.</span><span class="na">DELIM_SUFFIX</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;]]&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 템플릿 문법의 기본 suffix를 [[로 대체</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                </span><span class="p">...</span>
+</span></code></pre></div>
 <p><br></p>
 <p><code>hwpxTemplater</code>의 기본 템플릿 문법으로 사용되는 <code>{{ 데이터 }}</code> 형태에서 <code>}}</code>를 다른 문자열로 대체하고 싶은 경우 사용하는 옵션입니다. </p>
 <p>렌더링하고 싶은 데이터에 <code>{</code>가 포함될 경우 유용합니다.</p>
@@ -581,18 +581,18 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 <h3 id="33-configoptionchar_role_setter"><strong>3.3 ConfigOption.CHAR_ROLE_SETTER</strong></h3>
 <hr />
 <p><br></p>
-<pre><code class="language-java">import kr.mumberrymountain.hwpxtemplater.ConfigOption;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-import kr.mumberrymountain.hwpxtemplater.model.CharRole;
-
-CharRole charRole = new CharRole();
-charRole.set(PlaceHolderType.CONDITION, '+'); // 조건문 태그를 판별할 때 사용되는 ? 문자를 다른 문자로 + 문자로 대체
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                                .config(ConfigOption.CHAR_ROLE_SETTER, charRole)
-
-                                ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.ConfigOption</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.model.CharRole</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">CharRole</span><span class="w"> </span><span class="n">charRole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CharRole</span><span class="p">();</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">charRole</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">PlaceHolderType</span><span class="p">.</span><span class="na">CONDITION</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 조건문 태그를 판별할 때 사용되는 ? 문자를 다른 문자로 + 문자로 대체</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">                                </span><span class="p">.</span><span class="na">config</span><span class="p">(</span><span class="n">ConfigOption</span><span class="p">.</span><span class="na">CHAR_ROLE_SETTER</span><span class="p">,</span><span class="w"> </span><span class="n">charRole</span><span class="p">)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">                                </span><span class="p">...</span>
+</span></code></pre></div>
 <p><br></p>
 <p>조건문 태그를 판별할 때 사용되는 <code>?</code>, 반복문 태그를 판별할 때 사용되는 <code>#</code> 등 특정 태그가 어떤 태그인지 판별할 때 사용되는 역할 식별 문자를 디폴트 문자가 아닌 다른 문자로 설정하고 싶을 때 사용하는 옵션입니다.</p>
 <p><code>hwpxTemplater</code>에서 제공하는 <code>CharRole</code> 클래스를 이용해, Key 값으로 <code>PlaceHolderType</code>를, Value 값으로 문자를 넣어 인스턴스를 생성한 뒤 파라미터로 기입해 해당 옵션을 설정할 수 있습니다.</p>
@@ -638,19 +638,19 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
 <h3 id="34-configoptionauto_trim"><strong>3.4 ConfigOption.AUTO_TRIM</strong></h3>
 <hr />
 <p><br></p>
-<pre><code class="language-java">import kr.mumberrymountain.hwpxtemplater.ConfigOption;
-import kr.mumberrymountain.hwpxtemplater.HWPXTemplater;
-
-HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
-                .config(ConfigOption.AUTO_TRIM, true) // 데이터를 양쪽의 공백을 자동으로 trim처리
-                .parse(&quot;./hwpxtemplater.hwpx&quot;)
-                .render(new HashMap&lt;String, Object&gt;() {{
-                    put(&quot;data&quot;, &quot;    데이터     &quot;); // 양쪽의 공백을 제거하여 렌더링함
-                    }}
-                );
-
-                ...
-</code></pre>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.ConfigOption</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kr.mumberrymountain.hwpxtemplater.HWPXTemplater</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">HWPXTemplater</span><span class="w"> </span><span class="n">hwpxTemplater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWPXTemplater</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">                </span><span class="p">.</span><span class="na">config</span><span class="p">(</span><span class="n">ConfigOption</span><span class="p">.</span><span class="na">AUTO_TRIM</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="c1">// 데이터를 양쪽의 공백을 자동으로 trim처리</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">                </span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;./hwpxtemplater.hwpx&quot;</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">                </span><span class="p">.</span><span class="na">render</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{{</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">                    </span><span class="n">put</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;    데이터     &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 양쪽의 공백을 제거하여 렌더링함</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">                    </span><span class="p">}}</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">                </span><span class="p">);</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">                </span><span class="p">...</span>
+</span></code></pre></div>
 <p>hwpx 템플릿 파일에 데이터를 렌더링할 때, 데이터 양옆의 공백을 자동으로 제거하여 렌더링하고 싶은 경우 사용하는 옵션입니다.</p>
 <p><br></p>
 
@@ -701,7 +701,7 @@ HWPXTemplater hwpxTemplater = HWPXTemplater.builder()
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
