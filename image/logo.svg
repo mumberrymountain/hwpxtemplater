@@ -17,7 +17,7 @@
   <!-- Inner geometric shape - 화면을 거의 가득 채우도록 -->
   <g opacity="1">
     <!-- Back layer -->
-    <rect x="20" y="25" width="160" height="150" rx="8" 
+    <rect x="15" y="25" width="160" height="150" rx="8" 
           fill="#A855F7" opacity="0.6"
           transform="rotate(-4 100 100)"/>
     <!-- Middle layer -->
